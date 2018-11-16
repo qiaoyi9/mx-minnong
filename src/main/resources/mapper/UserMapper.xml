@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mx.minnong.mapper.UserMapper">
+    <select id="findOnById" parameterType="java.lang.String" resultType="com.mx.minnong.pojo.User">
+        SELECT * FROM mx_user where id = #{id}
+    </select>
+
+    <insert id="createUser" parameterType="com.mx.minnong.pojo.User">
+        INSERT INTO mx_user(id,username,password,phone,lastIp)VALUES(#{id},#{username},#{password},#{phone},#{lastIp})
+    </insert>
+</mapper>
