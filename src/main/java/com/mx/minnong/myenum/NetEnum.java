@@ -10,7 +10,8 @@ import lombok.Getter;
 @Getter
 public enum NetEnum {
     CREATEUSER_PARAM_ISEMPTY(50071,"用户参数不能为空!"),
-    USER_IDPARAM_ISEMPTY(50072,"用户id不能为空")
+    USER_IDPARAM_ISEMPTY(50072,"用户id不能为空"),
+    FILENAME_ISEMPTY(50021,"文件名不能为空")
     ;
     private Integer code;
 

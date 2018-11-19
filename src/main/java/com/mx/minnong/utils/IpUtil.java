@@ -4,6 +4,10 @@ package com.mx.minnong.utils;
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+/**
+ * @author Joe-PC
+ *  获取用户IP地址 判断真实性
+ */
 public class IpUtil {
     public static String getIpAddr(HttpServletRequest request) {
         String ipAddress = null;
