@@ -30,6 +30,11 @@ spring:
     remote:
       restart:
         enabled: true
+####redis配置####
+  redis:
+    host: 192.168.0.156
+    port: 6379
+    password: 123456
 ####mybatis配置####
 mybatis:
   type-aliases-package: com.mx.minnong.pojo
@@ -58,3 +63,4 @@ fdfs:
   tracker-list:            #TrackerList参数,支持多个
   - 192.168.0.156:22122
   - 192.168.0.156:22122
+
