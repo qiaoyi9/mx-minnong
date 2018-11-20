@@ -149,6 +149,18 @@ public class BaseClassController {
 
     /**
      * @auther: 乔一 https://www.joejay.cn
+     * @date: 17:32 2018/11/20
+     * @param: [id]
+     * @Description: 根据子分类id类产品
+     */
+    @RequestMapping("findKindByClassId/{id}")
+    public JoeJSONResult findKindByClassId(@PathVariable Integer id){
+        List<Kind> kindList = kindService.findAllByKindFid(id);
+        return JoeJSONResult.ok(kindList);
+    }
+
+    /**
+     * @auther: 乔一 https://www.joejay.cn
      * @date: 16:19 2018/11/20
      * @Description: 查询所有大类
      */
