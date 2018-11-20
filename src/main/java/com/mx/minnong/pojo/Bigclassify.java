@@ -1,8 +1,12 @@
 package com.mx.minnong.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
-public class Bigclassify {
+public class Bigclassify implements Serializable {
+
+    private static final long serialVersionUID = 4423424357048055575L;
     @Id
     @Column(name = "bcl_id")
     private Integer bclId;
@@ -12,6 +16,16 @@ public class Bigclassify {
      */
     @Column(name = "bcl_name")
     private String bclName;
+
+    private List<Classify> classifies;
+
+    public List<Classify> getClassifies() {
+        return classifies;
+    }
+
+    public void setClassifies(List<Classify> classifies) {
+        this.classifies = classifies;
+    }
 
     /**
      * @return bcl_id

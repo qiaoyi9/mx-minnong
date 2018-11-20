@@ -9,4 +9,7 @@
     <result column="cl_fid" property="clFid" jdbcType="INTEGER" />
     <result column="cla_name" property="claName" jdbcType="VARCHAR" />
   </resultMap>
+    <select id="findAllByFid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT * FROM classify WHERE classify.cl_fid=#{fId}
+    </select>
 </mapper>

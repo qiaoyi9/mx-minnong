@@ -9,4 +9,7 @@
     <result column="kind_fid" property="kindFid" jdbcType="INTEGER" />
     <result column="kind_name" property="kindName" jdbcType="VARCHAR" />
   </resultMap>
+    <select id="findAllByKindFid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT * FROM kind WHERE kind.kind_fid=#{kindFid}
+    </select>
 </mapper>

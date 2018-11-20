@@ -1,8 +1,11 @@
 package com.mx.minnong.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
-public class Classify {
+public class Classify implements Serializable {
+    private static final long serialVersionUID = 3824290291152222385L;
     @Id
     @Column(name = "cl_id")
     private Integer clId;
@@ -18,6 +21,8 @@ public class Classify {
      */
     @Column(name = "cla_name")
     private String claName;
+
+    private List<Kind> kinds;
 
     /**
      * @return cl_id

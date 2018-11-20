@@ -1,8 +1,10 @@
 package com.mx.minnong.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-public class Kind {
+public class Kind implements Serializable {
+    private static final long serialVersionUID = -548114342288170748L;
     @Id
     @Column(name = "kind_id")
     private Integer kindId;
@@ -68,4 +70,6 @@ public class Kind {
     public void setKindName(String kindName) {
         this.kindName = kindName;
     }
+
+
 }
