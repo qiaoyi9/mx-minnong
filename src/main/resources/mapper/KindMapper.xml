@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.KindMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Kind" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="kind_id" property="kindId" jdbcType="INTEGER" />
+    <result column="kind_fid" property="kindFid" jdbcType="INTEGER" />
+    <result column="kind_name" property="kindName" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

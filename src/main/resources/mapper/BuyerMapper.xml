@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.BuyerMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Buyer" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="buy_id" property="buyId" jdbcType="INTEGER" />
+    <result column="buy_psd" property="buyPsd" jdbcType="VARCHAR" />
+    <result column="buy_name" property="buyName" jdbcType="VARCHAR" />
+    <result column="buy_contacts" property="buyContacts" jdbcType="VARCHAR" />
+    <result column="buy_tel" property="buyTel" jdbcType="VARCHAR" />
+    <result column="buy_email" property="buyEmail" jdbcType="VARCHAR" />
+    <result column="buy_collection" property="buyCollection" jdbcType="VARCHAR" />
+    <result column="buy_comid" property="buyComid" jdbcType="INTEGER" />
+    <result column="buy_advertisement" property="buyAdvertisement" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

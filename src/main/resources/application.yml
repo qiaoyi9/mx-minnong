@@ -34,7 +34,7 @@ spring:
   redis:
     host: 192.168.0.156
     port: 6379
-    password: 123456
+    password:
 ####mybatis配置####
 mybatis:
   type-aliases-package: com.mx.minnong.pojo
@@ -62,5 +62,3 @@ fdfs:
     height: 80
   tracker-list:            #TrackerList参数,支持多个
   - 192.168.0.156:22122
-  - 192.168.0.156:22122
-

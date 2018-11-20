@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.ProduceMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Produce" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pro_id" property="proId" jdbcType="INTEGER" />
+    <result column="pro_name" property="proName" jdbcType="VARCHAR" />
+    <result column="pro_classify" property="proClassify" jdbcType="INTEGER" />
+    <result column="pro_img" property="proImg" jdbcType="VARCHAR" />
+    <result column="pro_sclassify" property="proSclassify" jdbcType="INTEGER" />
+    <result column="pro_uptimte" property="proUptimte" jdbcType="TIMESTAMP" />
+    <result column="pro_recommend" property="proRecommend" jdbcType="INTEGER" />
+    <result column="pro_province" property="proProvince" jdbcType="VARCHAR" />
+    <result column="pro_city" property="proCity" jdbcType="VARCHAR" />
+    <result column="pro_district" property="proDistrict" jdbcType="VARCHAR" />
+    <result column="pro_com" property="proCom" jdbcType="INTEGER" />
+    <result column="pro_base" property="proBase" jdbcType="INTEGER" />
+    <result column="pro_auditing" property="proAuditing" jdbcType="INTEGER" />
+    <result column="pro_browse" property="proBrowse" jdbcType="INTEGER" />
+    <result column="pro_lowest" property="proLowest" jdbcType="INTEGER" />
+    <result column="pro_highest" property="proHighest" jdbcType="INTEGER" />
+    <result column="pro_content" property="proContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

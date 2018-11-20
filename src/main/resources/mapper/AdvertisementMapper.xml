@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.AdvertisementMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Advertisement" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="adver_id" property="adverId" jdbcType="INTEGER" />
+    <result column="adver_proid" property="adverProid" jdbcType="INTEGER" />
+    <result column="adver_begintime" property="adverBegintime" jdbcType="TIMESTAMP" />
+    <result column="adver_endtime" property="adverEndtime" jdbcType="TIMESTAMP" />
+    <result column="adver_state" property="adverState" jdbcType="INTEGER" />
+    <result column="adver_position" property="adverPosition" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

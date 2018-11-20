@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Company" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="com_id" property="comId" jdbcType="INTEGER" />
+    <result column="com_buyid" property="comBuyid" jdbcType="INTEGER" />
+    <result column="com_advert" property="comAdvert" jdbcType="INTEGER" />
+    <result column="com_recommend" property="comRecommend" jdbcType="INTEGER" />
+    <result column="com_content" property="comContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

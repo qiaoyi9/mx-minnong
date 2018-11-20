@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.SellerMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Seller" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="sel_id" property="selId" jdbcType="INTEGER" />
+    <result column="sel_psd" property="selPsd" jdbcType="VARCHAR" />
+    <result column="sel_name" property="selName" jdbcType="VARCHAR" />
+    <result column="sel_contacts" property="selContacts" jdbcType="VARCHAR" />
+    <result column="sel_tel" property="selTel" jdbcType="VARCHAR" />
+    <result column="sel_email" property="selEmail" jdbcType="VARCHAR" />
+    <result column="sel_produceid" property="selProduceid" jdbcType="VARCHAR" />
+    <result column="sel_base" property="selBase" jdbcType="VARCHAR" />
+    <result column="sel_advertisement" property="selAdvertisement" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

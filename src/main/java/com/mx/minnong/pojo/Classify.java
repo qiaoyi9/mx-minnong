@@ -68,13 +68,4 @@ public class Classify {
     public void setClaName(String claName) {
         this.claName = claName;
     }
-
-    @Override
-    public String toString() {
-        return "Classify{" +
-                "clId=" + clId +
-                ", clFid=" + clFid +
-                ", claName='" + claName + '\'' +
-                '}';
-    }
 }
