@@ -6,10 +6,11 @@ import com.mx.minnong.pojo.Kind;
 import com.mx.minnong.service.BigClassifyService;
 import com.mx.minnong.service.ClassifyService;
 import com.mx.minnong.service.KindService;
+import com.mx.minnong.utils.BaseClassRedisKey;
 import com.mx.minnong.utils.JoeJSONResult;
+import com.mx.minnong.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +36,13 @@ public class BaseClassController {
     @Autowired
     private ClassifyService classifyService;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     @Autowired
     private KindService kindService;
 
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * @auther: 乔一 https://www.joejay.cn
@@ -117,11 +119,11 @@ public class BaseClassController {
      */
     @GetMapping("findAll")
     public JoeJSONResult findAll(){
-        boolean key = redisTemplate.hasKey("baseclass");
-        if (key){
-            Map<String,List> hashMap = redisTemplate.opsForHash().entries("baseclass");
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALL)){
+            Map<String,List> hashMap = redisUtil.entries(BaseClassRedisKey.BASECLASS_FINDALL);
             return JoeJSONResult.ok(hashMap);
         }else {
+            log.info("【Get Redis Data】 findAll is null");
             List<Bigclassify> bigclassifyList = bigClassifyService.findAll();
             List<Classify> classifyList = classifyService.findAll();
             List<Kind> kindList = kindService.findAll();
@@ -129,7 +131,7 @@ public class BaseClassController {
             hashMap.put("bigclass",bigclassifyList);
             hashMap.put("class",classifyList);
             hashMap.put("kind",kindList);
-            redisTemplate.opsForHash().putAll("baseclass",hashMap);
+            redisUtil.putAll(BaseClassRedisKey.BASECLASS_FINDALL,hashMap);
             return JoeJSONResult.ok(hashMap);
         }
     }
@@ -143,8 +145,19 @@ public class BaseClassController {
      */
     @RequestMapping("findClassByBigId/{id}")
     public JoeJSONResult findClassByBigId(@PathVariable Integer id){
-        List<Classify> classifyList = classifyService.findAllByFid(id);
-        return JoeJSONResult.ok(classifyList);
+        //避免redis key重复  将此id作为盐值拼接key
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDCLASSBYBIGID+id)){
+            List<Classify> classifies = redisUtil.range(BaseClassRedisKey.BASECLASS_FINDCLASSBYBIGID+id);
+            return JoeJSONResult.ok(classifies);
+        }else {
+            log.info("【Get Redis Data】 findClassByBigId is null id={}",id);
+            List<Classify> classifyList = classifyService.findAllByFid(id);
+            if (!classifyList.isEmpty()){
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_FINDCLASSBYBIGID+id,classifyList);
+            }
+            return JoeJSONResult.ok(classifyList);
+        }
+
     }
 
     /**
@@ -155,8 +168,17 @@ public class BaseClassController {
      */
     @RequestMapping("findKindByClassId/{id}")
     public JoeJSONResult findKindByClassId(@PathVariable Integer id){
-        List<Kind> kindList = kindService.findAllByKindFid(id);
-        return JoeJSONResult.ok(kindList);
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDKINDBYCLASSID+id)){
+            List<Kind> kinds = redisUtil.range(BaseClassRedisKey.BASECLASS_FINDKINDBYCLASSID+id);
+            return JoeJSONResult.ok(kinds);
+        }else {
+            log.info("【Get Redis Data】 findKindByClassId is null id={}",id);
+            List<Kind> kindList = kindService.findAllByKindFid(id);
+            if (!kindList.isEmpty()){
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_FINDKINDBYCLASSID+id,kindList);
+            }
+            return JoeJSONResult.ok(kindList);
+        }
     }
 
     /**
@@ -166,10 +188,9 @@ public class BaseClassController {
      */
     @GetMapping("BigClassFindAll")
     public JoeJSONResult bigClassFindAll() {
-        boolean datanotempty = redisTemplate.hasKey("bigclassdata");
-        if (datanotempty) {
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_BIGCLASSFINDALL)) {
             //reids存在数据
-            List<Bigclassify> redisData = redisTemplate.opsForList().range("bigclassdata", 0, -1);
+            List<Bigclassify> redisData = redisUtil.range(BaseClassRedisKey.BASECLASS_BIGCLASSFINDALL);
             return JoeJSONResult.ok(redisData);
         } else {
             log.info("【Get Redis Data】 BigClassify is null");
@@ -177,7 +198,7 @@ public class BaseClassController {
             List<Bigclassify> bigclassifyList = bigClassifyService.findAll();
             if (!bigclassifyList.isEmpty()) {
                 //写入redis
-                redisTemplate.opsForList().rightPushAll("bigclassdata", bigclassifyList);
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_BIGCLASSFINDALL,bigclassifyList);
             }
             return JoeJSONResult.ok(bigclassifyList);
         }
@@ -189,10 +210,9 @@ public class BaseClassController {
      */
     @GetMapping("ClassFindAll")
     public JoeJSONResult classFindAll() {
-        boolean datanotempty = redisTemplate.hasKey("classdata");
-        if (datanotempty) {
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_CLASSFINDALL)) {
             //reids存在数据
-            List<Classify> redisData = redisTemplate.opsForList().range("classdata", 0, -1);
+            List<Classify> redisData = redisUtil.range(BaseClassRedisKey.BASECLASS_CLASSFINDALL);
             return JoeJSONResult.ok(redisData);
         } else {
             log.info("【Get Redis Data】 Classify is null");
@@ -200,7 +220,7 @@ public class BaseClassController {
             List<Classify> classifies = classifyService.findAll();
             if (!classifies.isEmpty()) {
                 //写入redis
-                redisTemplate.opsForList().rightPushAll("classdata", classifies);
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_CLASSFINDALL,classifies);
             }
             return JoeJSONResult.ok(classifies);
         }
@@ -213,18 +233,16 @@ public class BaseClassController {
      */
     @GetMapping("KindFindAll")
     public JoeJSONResult kindFindAll() {
-        boolean datanotempty = redisTemplate.hasKey("kinddata");
-        if (datanotempty) {
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_KINDFINDALL)) {
             //reids存在数据
-            List<Kind> redisData = redisTemplate.opsForList().range("kinddata", 0, -1);
+            List<Kind> redisData = redisUtil.range(BaseClassRedisKey.BASECLASS_KINDFINDALL);
             return JoeJSONResult.ok(redisData);
         } else {
             log.info("【Get Redis Data】 kinds is null");
             //reids没有数据
             List<Kind> kinds = kindService.findAll();
             if (!kinds.isEmpty()) {
-                //写入redis
-                redisTemplate.opsForList().rightPushAll("kinddata", kinds);
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_KINDFINDALL, kinds);
             }
             return JoeJSONResult.ok(kinds);
         }
