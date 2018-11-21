@@ -4,8 +4,7 @@ import com.mx.minnong.utils.FastDFSClient;
 import com.mx.minnong.utils.FileTypeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ public class HelloController {
     FastDFSClient fastDFSClient;
 
 
-    @GetMapping("/hello")
+    @PostMapping("/hello")
     public String hello(MultipartFile file) throws IOException {
         System.out.println(file.getSize());
 
@@ -39,8 +38,8 @@ public class HelloController {
 
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "Joe";
+    @PostMapping("/test")
+    public String test(@RequestBody  @RequestParam String id){
+        return id;
     }
 }
