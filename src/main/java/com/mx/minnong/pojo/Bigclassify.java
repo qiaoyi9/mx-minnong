@@ -17,6 +17,10 @@ public class Bigclassify implements Serializable {
     @Column(name = "bcl_name")
     private String bclName;
 
+    @Column(name = "bcl_icon")
+    private  String bclIcon;
+
+
     private List<Classify> classifies;
 
     public List<Classify> getClassifies() {
@@ -25,6 +29,15 @@ public class Bigclassify implements Serializable {
 
     public void setClassifies(List<Classify> classifies) {
         this.classifies = classifies;
+    }
+
+
+    public String getBclIcon() {
+        return bclIcon;
+    }
+
+    public void setBclIcon(String bclIcon) {
+        this.bclIcon = bclIcon;
     }
 
     /**

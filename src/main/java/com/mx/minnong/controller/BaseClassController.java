@@ -3,18 +3,17 @@ package com.mx.minnong.controller;
 import com.mx.minnong.pojo.Bigclassify;
 import com.mx.minnong.pojo.Classify;
 import com.mx.minnong.pojo.Kind;
+import com.mx.minnong.pojo.Produce;
 import com.mx.minnong.service.BigClassifyService;
 import com.mx.minnong.service.ClassifyService;
 import com.mx.minnong.service.KindService;
+import com.mx.minnong.service.ProduceService;
 import com.mx.minnong.utils.BaseClassRedisKey;
 import com.mx.minnong.utils.JoeJSONResult;
 import com.mx.minnong.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +39,8 @@ public class BaseClassController {
     @Autowired
     private KindService kindService;
 
+    @Autowired
+    private ProduceService produceService;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -159,7 +160,6 @@ public class BaseClassController {
         }
 
     }
-
     /**
      * @auther: 乔一 https://www.joejay.cn
      * @date: 17:32 2018/11/20
@@ -245,6 +245,24 @@ public class BaseClassController {
                 redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_KINDFINDALL, kinds);
             }
             return JoeJSONResult.ok(kinds);
+        }
+    }
+
+    @RequestMapping("findAllRecommend/{pro_recommend}")
+    @ResponseBody
+    public JoeJSONResult findAllRecommend(@PathVariable Integer pro_recommend){
+        System.out.println("pro_recommend"+pro_recommend);
+        //避免redis key重复  将此id作为盐值拼接key
+        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALLRECOMMEND+pro_recommend)){
+            List<Produce>  produces= redisUtil.range(BaseClassRedisKey.BASECLASS_FINDALLRECOMMEND+pro_recommend);
+            return JoeJSONResult.ok(produces);
+        }else {
+            log.info("【Get Redis Data】 findAllRecommend is null pro_recommend={}",pro_recommend);
+            List<Produce>  produceList = produceService.findAllRecommend(pro_recommend);
+            if (!produceList.isEmpty()){
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_FINDALLRECOMMEND+pro_recommend,produceList);
+            }
+            return JoeJSONResult.ok(produceList);
         }
     }
 

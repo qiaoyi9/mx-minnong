@@ -7,5 +7,6 @@
     -->
     <result column="bcl_id" property="bclId" jdbcType="INTEGER" />
     <result column="bcl_name" property="bclName" jdbcType="VARCHAR" />
+    <result column="bcl_icon" property="bclIcon" jdbcType="VARCHAR"/>
   </resultMap>
 </mapper>

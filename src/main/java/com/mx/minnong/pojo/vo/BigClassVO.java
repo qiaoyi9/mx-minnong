@@ -14,6 +14,7 @@ public class BigClassVO extends Bigclassify {
     List<ClassVO> classVOList;
 
     public BigClassVO() {
+
     }
 
     public List<ClassVO> getClassVOList() {

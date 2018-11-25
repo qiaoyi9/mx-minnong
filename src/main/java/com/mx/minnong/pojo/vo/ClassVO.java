@@ -2,7 +2,6 @@ package com.mx.minnong.pojo.vo;
 
 import com.mx.minnong.pojo.Classify;
 import com.mx.minnong.pojo.Kind;
-import org.apache.catalina.LifecycleState;
 
 import java.util.List;
 

@@ -27,19 +27,7 @@
 		<!-- 配置mapper对应的java映射 -->
         <javaClientGenerator targetPackage="com.mx.minnong.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
-
-		<table tableName="seller"></table>
-		<table tableName="recommend"></table>
 		<table tableName="produce"></table>
-		<table tableName="offer"></table>
-		<table tableName="kind"></table>
-		<table tableName="company"></table>
-		<table tableName="classify"></table>
-		<table tableName="buyer"></table>
-		<table tableName="bigclassify"></table>
-		<table tableName="base"></table>
-		<table tableName="advertisement"></table>
 
-		 
     </context>
 </generatorConfiguration>
