@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: 乔一 https://www.joejay.cn
@@ -118,7 +119,7 @@ public class BaseClassController {
      * @date: 17:22 2018/11/20
      * @Description: 查询所有分类以及子类
      */
-    @GetMapping("findAll")
+    @GetMapping("fzindAll")
     public JoeJSONResult findAll(){
         if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALL)){
             Map<String,List> hashMap = redisUtil.entries(BaseClassRedisKey.BASECLASS_FINDALL);
@@ -247,23 +248,4 @@ public class BaseClassController {
             return JoeJSONResult.ok(kinds);
         }
     }
-
-    @RequestMapping("findAllRecommend/{pro_recommend}")
-    @ResponseBody
-    public JoeJSONResult findAllRecommend(@PathVariable Integer pro_recommend){
-        System.out.println("pro_recommend"+pro_recommend);
-        //避免redis key重复  将此id作为盐值拼接key
-        if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALLRECOMMEND+pro_recommend)){
-            List<Produce>  produces= redisUtil.range(BaseClassRedisKey.BASECLASS_FINDALLRECOMMEND+pro_recommend);
-            return JoeJSONResult.ok(produces);
-        }else {
-            log.info("【Get Redis Data】 findAllRecommend is null pro_recommend={}",pro_recommend);
-            List<Produce>  produceList = produceService.findAllRecommend(pro_recommend);
-            if (!produceList.isEmpty()){
-                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_FINDALLRECOMMEND+pro_recommend,produceList);
-            }
-            return JoeJSONResult.ok(produceList);
-        }
-    }
-
 }

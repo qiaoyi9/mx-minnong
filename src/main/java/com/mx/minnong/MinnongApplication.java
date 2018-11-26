@@ -9,7 +9,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = "com.mx.minnong.mapper")
 @EnableCaching
 public class MinnongApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MinnongApplication.class, args);
 	}

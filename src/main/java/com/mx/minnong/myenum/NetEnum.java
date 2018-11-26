@@ -15,6 +15,7 @@ public enum NetEnum {
     FILENAME_ISEMPTY(50021,"文件名不能为空"),
     CLASS_ID_ISNOTEMPTY(40311,"父类id不能为空"),
     PRO_RECOMMEND_ISNOTEMPTY(40311,"推荐标识不能为空"),
+    PRODUCE_ID_ISNOTEMPTY(40311,"产品id不能为空")
     ;
     private Integer code;
 

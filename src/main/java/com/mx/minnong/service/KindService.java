@@ -19,4 +19,6 @@ public interface KindService {
     List<Kind> findAllByKindFid(Integer kindFid);
 
     List<Kind> findAll();
+
+    Kind findOne(Integer id);
 }

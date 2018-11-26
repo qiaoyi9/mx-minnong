@@ -10,6 +10,9 @@ public interface ProduceMapper extends MyMapper<Produce> {
     //获得所有推荐产品
     List<Produce> findAllRecommend(Integer pro_recommend);
 
-    //根据大类小类和省份市区价格条件获得产品  pro_lowest最低价格 pro_highest最高价格
+    //根据大类小类种类和省份市区价格条件获得产品  pro_lowest最低价格 pro_highest最高价格
     List<Produce> findAllByCondition(ProduceVO produceVO);
+
+    //根据产品Id 获得产品
+    Produce findById(Integer proId);
 }

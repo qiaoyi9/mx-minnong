@@ -1,5 +1,7 @@
 package com.mx.minnong.pojo.vo;
-
+/*
+ * 用于接收前台产品查询条件
+ */
 import com.mx.minnong.pojo.Produce;
 
 /**
@@ -7,6 +9,7 @@ import com.mx.minnong.pojo.Produce;
  * @Date: Createdtime 2018/11/23 15:19
  */
 public class ProduceVO extends Produce {
+
     private Integer proLowest;
     private Integer proHighest;
 

@@ -1,9 +1,11 @@
 package com.mx.minnong.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Produce {
+//未曾实现序列化的实体类是无法被序列化到Redis中间件中的
+public class Produce  implements Serializable {
     @Column(name = "pro_id")
     private Integer proId;
 
@@ -427,5 +429,29 @@ public class Produce {
      */
     public void setProContent(String proContent) {
         this.proContent = proContent;
+    }
+
+    @Override
+    public String toString() {
+        return "Produce{" +
+                "proId=" + proId +
+                ", proName='" + proName + '\'' +
+                ", proClassify=" + proClassify +
+                ", proImg='" + proImg + '\'' +
+                ", proSclassify=" + proSclassify +
+                ", proUptimte=" + proUptimte +
+                ", proRecommend=" + proRecommend +
+                ", proProvince='" + proProvince + '\'' +
+                ", proCity='" + proCity + '\'' +
+                ", proDistrict='" + proDistrict + '\'' +
+                ", proSeller=" + proSeller +
+                ", proBase=" + proBase +
+                ", proAuditing=" + proAuditing +
+                ", proBrowse=" + proBrowse +
+                ", proPrice=" + proPrice +
+                ", proYield='" + proYield + '\'' +
+                ", proKind=" + proKind +
+                ", proContent='" + proContent + '\'' +
+                '}';
     }
 }

@@ -98,6 +98,12 @@
             <artifactId>fastdfs-client</artifactId>
             <version>1.26.2</version>
         </dependency>
+
+        <!-- spring email -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

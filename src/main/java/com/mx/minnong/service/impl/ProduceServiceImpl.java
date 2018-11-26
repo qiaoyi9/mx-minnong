@@ -36,4 +36,13 @@ public class ProduceServiceImpl implements ProduceService {
     public List<Produce> findAllByCondition(ProduceVO produceVO) {
         return produceMapper.findAllByCondition(produceVO);
     }
+
+    @Override
+    public Produce findById(Integer proId) {
+        if (null == proId && "".equals(proId)) {
+            log.info("【根据产品ID查询】 产品ID不能为空");
+            throw new NetException(NetEnum.CLASS_ID_ISNOTEMPTY);
+        }
+        return produceMapper.findById(proId);
+    }
 }
