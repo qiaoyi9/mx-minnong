@@ -6,6 +6,10 @@ import javax.persistence.*;
 
 //未曾实现序列化的实体类是无法被序列化到Redis中间件中的
 public class Produce  implements Serializable {
+
+    private static final long serialVersionUID = -3769476865810471519L;
+
+    @Id
     @Column(name = "pro_id")
     private Integer proId;
 
