@@ -63,6 +63,7 @@ public class BaseClassController {
             List<Bigclassify> bigclassifyList = bigClassifyService.findAll();
             List<Classify> classifyList = classifyService.findAll();
             List<Kind> kindList = kindService.findAll();
+
             HashMap<String,List> hashMap = new HashMap<String,List>();
             hashMap.put("bigclass",bigclassifyList);
             hashMap.put("class",classifyList);
