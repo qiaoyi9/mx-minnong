@@ -31,6 +31,7 @@ public class RecommendController {
     //首页产品推荐
     @RequestMapping("findAll")
     public JoeJSONResult findAll(){
+
         List<Recommend> listRecommend=new ArrayList<>();
         List<Produce> listProduce = new ArrayList<>();
         listRecommend=recommendService.findAll();
