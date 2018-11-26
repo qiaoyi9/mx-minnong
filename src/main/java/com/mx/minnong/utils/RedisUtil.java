@@ -65,7 +65,7 @@ public class RedisUtil<T>{
      * @param key
      * @param val
      */
-    public void rightPushAll(String key, Object... val) {
+    public void rightPushAll(String key, List val) {
         redisTemplate.opsForList().rightPushAll(key, val);
     }
 

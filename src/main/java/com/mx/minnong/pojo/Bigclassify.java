@@ -17,15 +17,7 @@ public class Bigclassify implements Serializable {
     @Column(name = "bcl_name")
     private String bclName;
 
-    private List<Classify> classifies;
 
-    public List<Classify> getClassifies() {
-        return classifies;
-    }
-
-    public void setClassifies(List<Classify> classifies) {
-        this.classifies = classifies;
-    }
 
     /**
      * @return bcl_id
@@ -57,5 +49,12 @@ public class Bigclassify implements Serializable {
      */
     public void setBclName(String bclName) {
         this.bclName = bclName;
+    }
+
+    @Override
+    public String toString() {
+        return "Bigclassify{" +
+                "bclId=" + bclId +
+                ", bclName='" + bclName ;
     }
 }
