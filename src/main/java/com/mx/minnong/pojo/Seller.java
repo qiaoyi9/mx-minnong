@@ -3,6 +3,8 @@ package com.mx.minnong.pojo;
 import javax.persistence.*;
 
 public class Seller {
+
+
     @Id
     @Column(name = "sel_id")
     private Integer selId;

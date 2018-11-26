@@ -36,4 +36,12 @@ public class KindServiceImpl implements KindService {
     public List<Kind> findAll() {
         return mapper.selectAll();
     }
+
+    @Override
+    public Kind findOne(Integer id) {
+        if (null == id && "".equals(id)){
+            log.info("【产品】");
+        }
+        return null;
+    }
 }

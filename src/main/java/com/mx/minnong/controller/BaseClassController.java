@@ -117,7 +117,7 @@ public class BaseClassController {
      * @date: 17:22 2018/11/20
      * @Description: 查询所有分类以及子类
      */
-    @GetMapping("findAll")
+    @GetMapping("fzindAll")
     public JoeJSONResult findAll(){
         if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALL)){
             Map<String,List> hashMap = redisUtil.entries(BaseClassRedisKey.BASECLASS_FINDALL);
@@ -247,5 +247,8 @@ public class BaseClassController {
             return JoeJSONResult.ok(kinds);
         }
     }
+
+
+
 
 }
