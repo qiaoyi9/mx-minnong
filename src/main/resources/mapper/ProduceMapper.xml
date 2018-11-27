@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="pro_id" property="proId" jdbcType="INTEGER" />
+    <id column="pro_id" property="proId" jdbcType="INTEGER" />
     <result column="pro_name" property="proName" jdbcType="VARCHAR" />
     <result column="pro_classify" property="proClassify" jdbcType="INTEGER" />
     <result column="pro_img" property="proImg" jdbcType="VARCHAR" />
@@ -19,29 +19,30 @@
     <result column="pro_base" property="proBase" jdbcType="INTEGER" />
     <result column="pro_auditing" property="proAuditing" jdbcType="INTEGER" />
     <result column="pro_browse" property="proBrowse" jdbcType="INTEGER" />
-    <result column="pro_price" property="proPrice" jdbcType="INTEGER" />
+    <result column="pro_price" property="proPrice" jdbcType="DECIMAL" />
     <result column="pro_yield" property="proYield" jdbcType="VARCHAR" />
     <result column="pro_kind" property="proKind" jdbcType="INTEGER" />
     <result column="pro_content" property="proContent" jdbcType="LONGVARCHAR" />
   </resultMap>
+
   <select id="findAllRecommend" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-      select * from Produce  where pro_recommend=#{pro_recommend};
+    select * from Produce  where pro_recommend=#{pro_recommend};
   </select>
   <select id="findAllByCondition" parameterType="com.mx.minnong.pojo.vo.ProduceVO" resultMap="BaseResultMap">
     SELECT * FROM Produce where
-        <if test="proClassify!=null">pro_classify=#{proClassify} and</if>
-        <if test="proSclassify!=null">pro_sclassify=#{proSclassify} and</if>
-        <if test="proProvince!=null">pro_province=#{proProvince} and</if>
-        <if test="proCity!=null">pro_city=#{proCity} and</if>
-        <if test="proDistrict!=null">pro_district=#{proDistrict} and</if>
-        <if test="proKind!=null">pro_kind=#{proKind} and</if>
-        <if test="proLowest!=null">pro_price >= #{proLowest} and</if>
-        <if test="proHighest!=null">
-            pro_price &lt;= #{proHighest} and
-        </if>
-        1=1
+    <if test="proClassify!=null">pro_classify=#{proClassify} and</if>
+    <if test="proSclassify!=null">pro_sclassify=#{proSclassify} and</if>
+    <if test="proProvince!=null">pro_province=#{proProvince} and</if>
+    <if test="proCity!=null">pro_city=#{proCity} and</if>
+    <if test="proDistrict!=null">pro_district=#{proDistrict} and</if>
+    <if test="proKind!=null">pro_kind=#{proKind} and</if>
+    <if test="proLowest!=null">pro_price >= #{proLowest} and</if>
+    <if test="proHighest!=null">
+      pro_price &lt;= #{proHighest} and
+    </if>
+    1=1
   </select>
-    <select id="findById" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
-        select * from Produce where pro_id=#{proId}
-    </select>
+  <select id="findById" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+    select * from Produce where pro_id=#{proId}
+  </select>
 </mapper>

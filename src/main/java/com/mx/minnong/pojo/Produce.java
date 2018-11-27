@@ -1,14 +1,13 @@
 package com.mx.minnong.pojo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
-//未曾实现序列化的实体类是无法被序列化到Redis中间件中的
-public class Produce  implements Serializable {
+public class Produce implements Serializable {
 
-    private static final long serialVersionUID = -3769476865810471519L;
-
+    private static final long serialVersionUID = -3560295408523194487L;
     @Id
     @Column(name = "pro_id")
     private Integer proId;
@@ -95,7 +94,7 @@ public class Produce  implements Serializable {
      * 商品价格
      */
     @Column(name = "pro_price")
-    private Integer proPrice;
+    private BigDecimal proPrice;
 
     /**
      * 数量+单位  eg:50万吨
@@ -368,7 +367,7 @@ public class Produce  implements Serializable {
      *
      * @return pro_price - 商品价格
      */
-    public Integer getProPrice() {
+    public BigDecimal getProPrice() {
         return proPrice;
     }
 
@@ -377,7 +376,7 @@ public class Produce  implements Serializable {
      *
      * @param proPrice 商品价格
      */
-    public void setProPrice(Integer proPrice) {
+    public void setProPrice(BigDecimal proPrice) {
         this.proPrice = proPrice;
     }
 
@@ -433,29 +432,5 @@ public class Produce  implements Serializable {
      */
     public void setProContent(String proContent) {
         this.proContent = proContent;
-    }
-
-    @Override
-    public String toString() {
-        return "Produce{" +
-                "proId=" + proId +
-                ", proName='" + proName + '\'' +
-                ", proClassify=" + proClassify +
-                ", proImg='" + proImg + '\'' +
-                ", proSclassify=" + proSclassify +
-                ", proUptimte=" + proUptimte +
-                ", proRecommend=" + proRecommend +
-                ", proProvince='" + proProvince + '\'' +
-                ", proCity='" + proCity + '\'' +
-                ", proDistrict='" + proDistrict + '\'' +
-                ", proSeller=" + proSeller +
-                ", proBase=" + proBase +
-                ", proAuditing=" + proAuditing +
-                ", proBrowse=" + proBrowse +
-                ", proPrice=" + proPrice +
-                ", proYield='" + proYield + '\'' +
-                ", proKind=" + proKind +
-                ", proContent='" + proContent + '\'' +
-                '}';
     }
 }
