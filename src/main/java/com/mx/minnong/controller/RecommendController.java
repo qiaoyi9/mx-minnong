@@ -18,7 +18,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/recommend/")
-@Slf4j
 public class RecommendController {
     @Autowired
     private RecommendService recommendService;

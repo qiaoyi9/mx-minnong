@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Produce implements Serializable {
 
     private static final long serialVersionUID = -3560295408523194487L;
+
     @Id
     @Column(name = "pro_id")
     private Integer proId;

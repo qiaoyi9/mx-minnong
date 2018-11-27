@@ -2,38 +2,37 @@ package com.mx.minnong.pojo.vo;
 /*
  * 用于接收前台产品查询条件
  */
-import com.mx.minnong.pojo.Produce;
+import lombok.Data;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @Author: zhl
  * @Date: Createdtime 2018/11/23 15:19
  */
-public class ProduceVO extends Produce {
+@Data
+public class ProduceVO {
 
+    private Integer proId;
+    private String proName;
+    private Integer proClassify;
+    private String proImg;
+    private Integer proSclassify;
+    private Date proUptimte;
+    private Integer proRecommend;
+    private String proProvince;
+    private String proCity;
+    private String proDistrict;
+    private Integer proSeller;
+    private Integer proBase;
+    private Integer proAuditing;
+    private Integer proBrowse;
+    private BigDecimal proPrice;
+    private String proYield;
+    private Integer proKind;
+    private String proContent;
     private Integer proLowest;
     private Integer proHighest;
 
-    public Integer getProLowest() {
-        return proLowest;
-    }
-
-    public void setProLowest(Integer proLowest) {
-        this.proLowest = proLowest;
-    }
-
-    public Integer getProHighest() {
-        return proHighest;
-    }
-
-    public void setProHighest(Integer proHighest) {
-        this.proHighest = proHighest;
-    }
-
-    @Override
-    public String toString() {
-        return "ProduceVO{" +
-                "proLowest=" + proLowest +
-                ", proHighest=" + proHighest +
-                '}';
-    }
 }
