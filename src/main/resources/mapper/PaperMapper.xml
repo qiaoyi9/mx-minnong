@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.PaperMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Paper" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="paper_id" property="paperId" jdbcType="INTEGER" />
+    <result column="paper_title" property="paperTitle" jdbcType="VARCHAR" />
+    <result column="paper_source" property="paperSource" jdbcType="VARCHAR" />
+    <result column="paper_kind" property="paperKind" jdbcType="INTEGER" />
+    <result column="paper_region" property="paperRegion" jdbcType="VARCHAR" />
+    <result column="paper_status" property="paperStatus" jdbcType="INTEGER" />
+    <result column="paper_address" property="paperAddress" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
