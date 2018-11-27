@@ -34,6 +34,6 @@ public class GeneratorDisplay {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }

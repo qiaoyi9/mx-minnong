@@ -27,7 +27,14 @@
 		<!-- 配置mapper对应的java映射 -->
         <javaClientGenerator targetPackage="com.mx.minnong.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
+<<<<<<< HEAD
 		<table tableName="produce"></table>
 
+=======
+
+		<table tableName="bigclassify"></table>
+
+		 
+>>>>>>> c62cd5d95f96d006928450c83826473bc3f05b6e
     </context>
 </generatorConfiguration>

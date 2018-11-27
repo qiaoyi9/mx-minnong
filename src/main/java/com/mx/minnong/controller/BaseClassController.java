@@ -13,8 +13,16 @@ import com.mx.minnong.utils.JoeJSONResult;
 import com.mx.minnong.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
 
+=======
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+>>>>>>> c62cd5d95f96d006928450c83826473bc3f05b6e
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,73 +54,9 @@ public class BaseClassController {
     @Autowired
     private RedisUtil redisUtil;
 
-    /**
-     * @auther: 乔一 https://www.joejay.cn
-     * @date: 15:06 2018/11/20
-     * @param: []
-     * @return: com.mx.minnong.utils.JoeJSONResult
-     * @methodName: findAll
-     * @Description:
-     */
-    /*@RequestMapping("findAll")
-    public JoeJSONResult findAll() {
+    @Autowired
+    private RedisTemplate redisTemplate;
 
-        boolean classBaseData = redisTemplate.hasKey("baseClassData");
-        if (classBaseData){
-
-        }
-        List<Bigclassify> bigclassifyList = bigClassifyService.findAll();
-        List<Classify> classifyList = classifyService.findAll();
-
-        *//*List<Bigclassify> bigclassifyList = new ArrayList<>();
-        List<Bigclassify> bigclassifies = bigClassifyService.findAll();
-        if (!bigclassifies.isEmpty()){
-            for (Bigclassify big: bigclassifies) {
-                if (big!=null){
-                    List<Classify> classifies = classifyService.findAllByFid(big.getBclId());
-                    if (classifies.isEmpty()){
-
-                    }
-                }
-            }
-
-        }*//*
-
-     *//*List<BigClassVO> bigClassVOList = new ArrayList<>();
-        List<ClassVO> classVOList = new ArrayList<>();
-        BigClassVO bigClassVO = null;
-        ClassVO classVO = null;
-        List<Bigclassify> bigclassifyList = bigClassifyService.findAll();
-        //判断大类查询返回结果是否为空
-        if (!bigclassifyList.isEmpty() && null != bigclassifyList) {
-            for (Bigclassify big : bigclassifyList) {
-                if (big != null) {
-                    bigClassVO = new BigClassVO();
-                    //拷贝big对象到VO
-                    BeanUtils.copyProperties(big, bigClassVO);
-                    bigClassVOList.add(bigClassVO);
-                    List<Classify> classifies = classifyService.findAllByFid(bigClassVO.getBclId());
-                    //判断产品分类是否为空
-                    if (null != classifies && !classifies.isEmpty()) {
-                        for (Classify classify : classifies) {
-                            if (classify != null) {
-                                classVO = new ClassVO();
-                                BeanUtils.copyProperties(classify, classVO);
-                                bigClassVO.setClassVOList(classVOList);
-                                List<Kind> kinds = kindService.findAllByKindFid(classVO.getClId());
-                                if (null != kinds && !kinds.isEmpty()) {
-                                    classVO.setFindList(kinds);
-                                    classVOList.add(classVO);
-                                    return JoeJSONResult.ok(bigClassVOList);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return null;*//*
-    }*/
 
     /**
      * @auther: 乔一 https://www.joejay.cn
@@ -129,6 +73,7 @@ public class BaseClassController {
             List<Bigclassify> bigclassifyList = bigClassifyService.findAll();
             List<Classify> classifyList = classifyService.findAll();
             List<Kind> kindList = kindService.findAll();
+
             HashMap<String,List> hashMap = new HashMap<String,List>();
             hashMap.put("bigclass",bigclassifyList);
             hashMap.put("class",classifyList);

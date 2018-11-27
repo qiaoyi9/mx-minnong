@@ -5,8 +5,12 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="bcl_id" property="bclId" jdbcType="INTEGER" />
+    <id column="bcl_id" property="bclId" jdbcType="INTEGER" />
     <result column="bcl_name" property="bclName" jdbcType="VARCHAR" />
+<<<<<<< HEAD
     <result column="bcl_icon" property="bclIcon" jdbcType="VARCHAR"/>
+=======
+    <result column="bcl_icon" property="bclIcon" jdbcType="VARCHAR" />
+>>>>>>> c62cd5d95f96d006928450c83826473bc3f05b6e
   </resultMap>
 </mapper>

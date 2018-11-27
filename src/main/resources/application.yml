@@ -43,7 +43,7 @@ spring:
   mail:
     host: smtp.qq.com
     username: 1815066657@qq.com
-    password: ifvwryzfgpaaeheb
+    password: ivldcisqgynndjca
     default-encoding: UTF-8
     properties:
       mail:
@@ -51,7 +51,7 @@ spring:
           auth: true
           starttls:
             enable: true
-            required: true
+            required: true　
 
 ####mybatis配置####
 mybatis:
