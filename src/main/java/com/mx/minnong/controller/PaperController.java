@@ -1,0 +1,72 @@
+package com.mx.minnong.controller;
+
+import com.github.pagehelper.PageInfo;
+import com.mx.minnong.pojo.Paper;
+import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.service.PaperService;
+import com.mx.minnong.utils.JoeJSONResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * @Author: 乔一 https://www.joejay.cn
+ * @Date: Created in 15:22  2018/11/27
+ * @Description:
+ */
+@RestController
+@RequestMapping("/Paper/")
+public class PaperController {
+
+    @Autowired
+    private PaperService paperService;
+
+    /**
+     * @param: id
+     * 根据主键查询
+     */
+    @RequestMapping(value = "api/{id}" ,method = RequestMethod.GET)
+    public JoeJSONResult getPaperByPrimaryKey(@PathVariable Integer id){
+        Paper paper = paperService.getPaperByPrimaryKey(id);
+        return JoeJSONResult.ok(paper);
+    }
+
+    /**
+     * @param: id
+     * 根据主键删除
+     */
+    @RequestMapping(value = "api/{id}" ,method = RequestMethod.DELETE)
+    public JoeJSONResult deletePaperByPrimaryKey(@PathVariable Integer id){
+        int reslt = paperService.deletePaperByPrimaryKey(id);
+        return JoeJSONResult.ok(reslt);
+    }
+
+    /**
+     * @param: Paper
+     * 添加Paper
+     */
+    @RequestMapping(value = "api" ,method = RequestMethod.POST)
+    public JoeJSONResult savePaper(Paper paper){
+        int result = paperService.save(paper);
+        return JoeJSONResult.ok();
+    }
+
+    /**
+     * @param: Paper id
+     * 根据主键修改
+     */
+    @RequestMapping(value = "api/{id}",method = RequestMethod.PUT)
+    public JoeJSONResult updatePaperByPrimaryKey(@PathVariable Integer id,Paper paper){
+        paper.setPaperId(id);
+        int result = paperService.updatePaperByPrimaryKey(paper);
+        return JoeJSONResult.ok(result);
+    }
+
+    @RequestMapping(value = "api",method = RequestMethod.GET)
+    public JoeJSONResult findAllPaper(PageVo pageVo){
+        List<Paper> papers = paperService.findAll(pageVo);
+        PageInfo pageInfo = new PageInfo(papers);
+        return JoeJSONResult.ok(pageInfo);
+    }
+}

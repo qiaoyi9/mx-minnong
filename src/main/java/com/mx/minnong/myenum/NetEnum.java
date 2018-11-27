@@ -1,6 +1,5 @@
 package com.mx.minnong.myenum;
 
-import com.mx.minnong.pojo.Produce;
 import lombok.Getter;
 
 /**
@@ -11,11 +10,12 @@ import lombok.Getter;
 @Getter
 public enum NetEnum {
     CREATEUSER_PARAM_ISEMPTY(50071,"用户参数不能为空!"),
-    USER_IDPARAM_ISEMPTY(40311,"用户id不能为空"),
+    USER_IDPARAM_ISEMPTY(403,"用户id不能为空"),
     FILENAME_ISEMPTY(50021,"文件名不能为空"),
-    CLASS_ID_ISNOTEMPTY(40311,"父类id不能为空"),
-    PRO_RECOMMEND_ISNOTEMPTY(40311,"推荐标识不能为空"),
-    PRODUCE_ID_ISNOTEMPTY(40311,"产品id不能为空")
+    CLASS_ID_ISNOTEMPTY(403,"父类id不能为空"),
+    ID_ISEMPTY(403,"主键不能为空"),
+    PRO_RECOMMEND_ISNOTEMPTY(403,"推荐标识不能为空"),
+    PRODUCE_ID_ISNOTEMPTY(403,"产品id不能为空")
     ;
     private Integer code;
 
