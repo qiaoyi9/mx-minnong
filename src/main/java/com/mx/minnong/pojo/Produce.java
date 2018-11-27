@@ -1,10 +1,11 @@
 package com.mx.minnong.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Produce {
-    @Id
+//未曾实现序列化的实体类是无法被序列化到Redis中间件中的
+public class Produce  implements Serializable {
     @Column(name = "pro_id")
     private Integer proId;
 
@@ -63,10 +64,10 @@ public class Produce {
     private String proDistrict;
 
     /**
-     * 所属公司
+     * 所属卖家
      */
-    @Column(name = "pro_com")
-    private Integer proCom;
+    @Column(name = "pro_seller")
+    private Integer proSeller;
 
     /**
      * 关联基地
@@ -87,16 +88,22 @@ public class Produce {
     private Integer proBrowse;
 
     /**
-     * 价格区间最低价
+     * 商品价格
      */
-    @Column(name = "pro_lowest")
-    private Integer proLowest;
+    @Column(name = "pro_price")
+    private Integer proPrice;
 
     /**
-     * 价格区间最高
+     * 数量+单位  eg:50万吨
      */
-    @Column(name = "pro_highest")
-    private Integer proHighest;
+    @Column(name = "pro_yield")
+    private String proYield;
+
+    /**
+     * 商品种类
+     */
+    @Column(name = "pro_kind")
+    private Integer proKind;
 
     /**
      * 详细介绍
@@ -281,21 +288,21 @@ public class Produce {
     }
 
     /**
-     * 获取所属公司
+     * 获取所属卖家
      *
-     * @return pro_com - 所属公司
+     * @return pro_seller - 所属卖家
      */
-    public Integer getProCom() {
-        return proCom;
+    public Integer getProSeller() {
+        return proSeller;
     }
 
     /**
-     * 设置所属公司
+     * 设置所属卖家
      *
-     * @param proCom 所属公司
+     * @param proSeller 所属卖家
      */
-    public void setProCom(Integer proCom) {
-        this.proCom = proCom;
+    public void setProSeller(Integer proSeller) {
+        this.proSeller = proSeller;
     }
 
     /**
@@ -353,39 +360,57 @@ public class Produce {
     }
 
     /**
-     * 获取价格区间最低价
+     * 获取商品价格
      *
-     * @return pro_lowest - 价格区间最低价
+     * @return pro_price - 商品价格
      */
-    public Integer getProLowest() {
-        return proLowest;
+    public Integer getProPrice() {
+        return proPrice;
     }
 
     /**
-     * 设置价格区间最低价
+     * 设置商品价格
      *
-     * @param proLowest 价格区间最低价
+     * @param proPrice 商品价格
      */
-    public void setProLowest(Integer proLowest) {
-        this.proLowest = proLowest;
+    public void setProPrice(Integer proPrice) {
+        this.proPrice = proPrice;
     }
 
     /**
-     * 获取价格区间最高
+     * 获取数量+单位  eg:50万吨
      *
-     * @return pro_highest - 价格区间最高
+     * @return pro_yield - 数量+单位  eg:50万吨
      */
-    public Integer getProHighest() {
-        return proHighest;
+    public String getProYield() {
+        return proYield;
     }
 
     /**
-     * 设置价格区间最高
+     * 设置数量+单位  eg:50万吨
      *
-     * @param proHighest 价格区间最高
+     * @param proYield 数量+单位  eg:50万吨
      */
-    public void setProHighest(Integer proHighest) {
-        this.proHighest = proHighest;
+    public void setProYield(String proYield) {
+        this.proYield = proYield;
+    }
+
+    /**
+     * 获取商品种类
+     *
+     * @return pro_kind - 商品种类
+     */
+    public Integer getProKind() {
+        return proKind;
+    }
+
+    /**
+     * 设置商品种类
+     *
+     * @param proKind 商品种类
+     */
+    public void setProKind(Integer proKind) {
+        this.proKind = proKind;
     }
 
     /**
@@ -404,5 +429,29 @@ public class Produce {
      */
     public void setProContent(String proContent) {
         this.proContent = proContent;
+    }
+
+    @Override
+    public String toString() {
+        return "Produce{" +
+                "proId=" + proId +
+                ", proName='" + proName + '\'' +
+                ", proClassify=" + proClassify +
+                ", proImg='" + proImg + '\'' +
+                ", proSclassify=" + proSclassify +
+                ", proUptimte=" + proUptimte +
+                ", proRecommend=" + proRecommend +
+                ", proProvince='" + proProvince + '\'' +
+                ", proCity='" + proCity + '\'' +
+                ", proDistrict='" + proDistrict + '\'' +
+                ", proSeller=" + proSeller +
+                ", proBase=" + proBase +
+                ", proAuditing=" + proAuditing +
+                ", proBrowse=" + proBrowse +
+                ", proPrice=" + proPrice +
+                ", proYield='" + proYield + '\'' +
+                ", proKind=" + proKind +
+                ", proContent='" + proContent + '\'' +
+                '}';
     }
 }
