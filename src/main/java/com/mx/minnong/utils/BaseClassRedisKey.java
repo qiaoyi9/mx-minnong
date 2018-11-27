@@ -15,5 +15,6 @@ public class BaseClassRedisKey {
 
 
     //无条件
-    public static final String BASECLASS_FINDALLBYCONDITIONNull = "BaseClass/findAllByConditionNull_key";
+    public static final String PRODUCECLASS_FINDALLBYCONDITIONNULL = "ProduceClass/findAllByConditionNull_key";
+    public static final String ADVERTISEMENT_FINDALLBYCONDITION = "Advertisement/findAllByCondition_key";
 }

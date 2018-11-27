@@ -1,5 +1,6 @@
 package com.mx.minnong.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.mx.minnong.exception.NetException;
 import com.mx.minnong.mapper.ProduceMapper;
 import com.mx.minnong.myenum.NetEnum;
@@ -34,6 +35,9 @@ public class ProduceServiceImpl implements ProduceService {
 
     @Override
     public List<Produce> findAllByCondition(ProduceVO produceVO) {
+        System.out.println(produceVO.getPageNum()+produceVO.getPageSize());
+        //使用分页插件,核心代码就这一行
+        PageHelper.startPage(produceVO.getPageNum(), produceVO.getPageSize());
         return produceMapper.findAllByCondition(produceVO);
     }
 

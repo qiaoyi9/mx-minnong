@@ -7,6 +7,7 @@ import com.mx.minnong.service.RecommendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +28,7 @@ public class RecommendServiceImpl implements RecommendService {
 
     //获得所有推荐产品
     @Override
+    @Transactional
     public List<Recommend> findAll() {
         List<Recommend> list=new ArrayList<>();
         list=recommendMapper.selectAll();

@@ -12,7 +12,6 @@ import java.util.Date;
  * @Date: Createdtime 2018/11/23 15:19
  */
 public class ProduceVO {
-
     private Integer proId;
     private String proName;
     private Integer proClassify;
@@ -33,6 +32,24 @@ public class ProduceVO {
     private String proContent;
     private Integer proLowest;
     private Integer proHighest;
+    private Integer pageNum=1;
+    private Integer pageSize=15;
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 
     public Integer getProId() {
         return proId;
@@ -192,5 +209,33 @@ public class ProduceVO {
 
     public void setProHighest(Integer proHighest) {
         this.proHighest = proHighest;
+    }
+
+    public ProduceVO(Integer proId, String proName, Integer proClassify, String proImg, Integer proSclassify, Date proUptimte, Integer proRecommend, String proProvince, String proCity, String proDistrict, Integer proSeller, Integer proBase, Integer proAuditing, Integer proBrowse, BigDecimal proPrice, String proYield, Integer proKind, String proContent, Integer proLowest, Integer proHighest, Integer pageNum, Integer pageSize) {
+        this.proId = proId;
+        this.proName = proName;
+        this.proClassify = proClassify;
+        this.proImg = proImg;
+        this.proSclassify = proSclassify;
+        this.proUptimte = proUptimte;
+        this.proRecommend = proRecommend;
+        this.proProvince = proProvince;
+        this.proCity = proCity;
+        this.proDistrict = proDistrict;
+        this.proSeller = proSeller;
+        this.proBase = proBase;
+        this.proAuditing = proAuditing;
+        this.proBrowse = proBrowse;
+        this.proPrice = proPrice;
+        this.proYield = proYield;
+        this.proKind = proKind;
+        this.proContent = proContent;
+        this.proLowest = proLowest;
+        this.proHighest = proHighest;
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+    }
+
+    public ProduceVO() {
     }
 }

@@ -12,4 +12,11 @@
     <result column="adver_state" property="adverState" jdbcType="INTEGER" />
     <result column="adver_position" property="adverPosition" jdbcType="INTEGER" />
   </resultMap>
+  <select id="findByState" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      select * from Advertisement where
+      <choose>
+        <when test="adverState!=null">adver_state=#{adverState}</when>
+        <otherwise>1=1</otherwise>
+      </choose>
+  </select>
 </mapper>

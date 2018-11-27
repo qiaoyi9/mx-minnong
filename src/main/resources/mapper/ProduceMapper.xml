@@ -30,6 +30,7 @@
   </select>
   <select id="findAllByCondition" parameterType="com.mx.minnong.pojo.vo.ProduceVO" resultMap="BaseResultMap">
     SELECT * FROM Produce where
+    <if test="proName!=null">pro_name like "%"#{proName}"%" and</if>
     <if test="proClassify!=null">pro_classify=#{proClassify} and</if>
     <if test="proSclassify!=null">pro_sclassify=#{proSclassify} and</if>
     <if test="proProvince!=null">pro_province=#{proProvince} and</if>

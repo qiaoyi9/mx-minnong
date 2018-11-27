@@ -1,5 +1,6 @@
 package com.mx.minnong.utils;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ public class RedisUtil<T>{
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
+
 
     /**
      * @auther: 乔一 https://www.joejay.cn
@@ -70,6 +72,25 @@ public class RedisUtil<T>{
     }
 
     /**
+     * 存 String
+     *
+     * @param key
+     * @param val
+     */
+    public void setString(String key, String val) {
+        redisTemplate.opsForValue().set(key,val);
+    }
+
+    /**
+     * 取 String
+     *
+     * @param key
+     */
+    public Object getString(String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+    /**
+     *
      * 取集合 list
      *
      * @param key
