@@ -12,7 +12,8 @@ public class BaseClassRedisKey {
     public static final String BASECLASS_KINDFINDALL = "BaseClass/KindFindAll_key";
     public static final String BASECLASS_FINDKINDBYCLASSID = "BaseClass/findKindByClassId_key";
     public static final String BASECLASS_FINDCLASSBYBIGID = "BaseClass/findClassByBigId_key";
-    public static final String BASECLASS_FINDALLRECOMMEND = "BaseClass/findAllRecommend_key";
+
+
     //无条件
     public static final String BASECLASS_FINDALLBYCONDITIONNull = "BaseClass/findAllByConditionNull_key";
 }

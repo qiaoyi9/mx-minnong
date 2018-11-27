@@ -5,12 +5,10 @@ import com.mx.minnong.pojo.Recommend;
 import com.mx.minnong.service.ProduceService;
 import com.mx.minnong.service.RecommendService;
 import com.mx.minnong.utils.JoeJSONResult;
-import com.mx.minnong.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,15 +28,15 @@ public class RecommendController {
 
     //首页产品推荐
     @RequestMapping("findAll")
-    public JoeJSONResult findAll(){
-        List<Recommend> listRecommend=new ArrayList<>();
+    public JoeJSONResult findAll() {
+        List<Recommend> listRecommend = new ArrayList<>();
         List<Produce> listProduce = new ArrayList<>();
-        listRecommend=recommendService.findAll();
-        if(listRecommend.size()>0){
-            for (Recommend r:listRecommend) {
-                listProduce.add(produceService.findById(r.getRecId())) ;
+        listRecommend = recommendService.findAll();
+        if (listRecommend.size() > 0) {
+            for (Recommend r : listRecommend) {
+                listProduce.add(produceService.findById(r.getRecId()));
             }
-            return  JoeJSONResult.ok(listProduce);
+            return JoeJSONResult.ok(listProduce);
         }
         return null;
     }

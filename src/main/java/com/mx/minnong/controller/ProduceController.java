@@ -3,13 +3,11 @@ package com.mx.minnong.controller;
 import com.mx.minnong.pojo.Produce;
 import com.mx.minnong.pojo.vo.ProduceVO;
 import com.mx.minnong.service.ProduceService;
-import com.mx.minnong.service.RecommendService;
 import com.mx.minnong.utils.BaseClassRedisKey;
 import com.mx.minnong.utils.JoeJSONResult;
 import com.mx.minnong.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
@@ -37,33 +35,33 @@ public class ProduceController {
      */
     @RequestMapping("findAllByCondition")
     public JoeJSONResult findAllByCondition(ProduceVO produceVO) throws IllegalAccessException {
-        boolean flag=false;
+        boolean flag = false;
         Class produceVOClass = produceVO.getClass();
         //produceVOClass = produceVOClass.getSuperclass() 得到父类的class文件
         for (; produceVOClass != Object.class; produceVOClass = produceVOClass.getSuperclass()) {//向上循环  遍历父类
             Field[] field = produceVOClass.getDeclaredFields();
             for (Field f : field) {
                 f.setAccessible(true);
-                if(f.get(produceVO)!=null){
-                    flag=true;
+                if (f.get(produceVO) != null) {
+                    flag = true;
                     break;
                 } // System.out.println("属性："+f.getName()+" 值："+f.get(produceVO));
             }
         }
-        if(flag){
-            if(redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull)){
-                List<Produce> Produces=redisUtil.range(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull);
+        if (flag) {
+            if (redisUtil.existsKey(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull)) {
+                List<Produce> Produces = redisUtil.range(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull);
                 return JoeJSONResult.ok(Produces);
-            }else{
+            } else {
                 log.info("【Get Redis Data】 findAllByCondition is null ");
-                List<Produce> Produces=produceService.findAllByCondition(produceVO);
-                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull,Produces);
+                List<Produce> Produces = produceService.findAllByCondition(produceVO);
+                redisUtil.rightPushAll(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull, Produces);
                 //保存3天
-                redisUtil.pireKey(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull,3, TimeUnit.DAYS);
+                redisUtil.pireKey(BaseClassRedisKey.BASECLASS_FINDALLBYCONDITIONNull, 3, TimeUnit.DAYS);
                 return JoeJSONResult.ok(Produces);
             }
-        }else{
-            List<Produce> Produces=produceService.findAllByCondition(produceVO);
+        } else {
+            List<Produce> Produces = produceService.findAllByCondition(produceVO);
             return JoeJSONResult.ok(Produces);
         }
     }
