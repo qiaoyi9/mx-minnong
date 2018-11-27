@@ -44,10 +44,6 @@ public class BaseClassController {
     @Autowired
     private RedisUtil redisUtil;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-
     /**
      * @auther: 乔一 https://www.joejay.cn
      * @date: 17:22 2018/11/20

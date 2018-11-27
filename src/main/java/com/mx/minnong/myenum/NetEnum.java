@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * @Author: 乔一 https://www.joejay.cn
  * @Date: Created in 18:57  2018/11/16
- * @Description:全局状态返回码
+ * @Description:全局异常状态
  */
 @Getter
 public enum NetEnum {
