@@ -18,4 +18,7 @@ public interface ProduceService {
 
     //根据产品Id 获得产品
     Produce findById(Integer proId);
+
+    //获得热门产品
+    List<Produce> findHot();
 }

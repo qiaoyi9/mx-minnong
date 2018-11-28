@@ -15,4 +15,5 @@ public interface ProduceMapper extends MyMapper<Produce> {
 
     //根据产品Id 获得产品
     Produce findById(Integer proId);
+
 }

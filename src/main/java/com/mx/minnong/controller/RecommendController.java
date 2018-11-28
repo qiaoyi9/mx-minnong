@@ -1,7 +1,9 @@
 package com.mx.minnong.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.mx.minnong.pojo.Produce;
 import com.mx.minnong.pojo.Recommend;
+import com.mx.minnong.pojo.vo.PageVo;
 import com.mx.minnong.service.ProduceService;
 import com.mx.minnong.service.RecommendService;
 import com.mx.minnong.utils.JoeJSONResult;
@@ -27,17 +29,17 @@ public class RecommendController {
 
     //首页产品推荐
     @RequestMapping("findAll")
-    public JoeJSONResult findAll() {
+    public JoeJSONResult findAll(PageVo pageVo) {
         List<Recommend> listRecommend = new ArrayList<>();
         List<Produce> listProduce = new ArrayList<>();
-        listRecommend = recommendService.findAll();
+        listRecommend = recommendService.findAll(pageVo);
         if (listRecommend.size() > 0) {
             for (Recommend r : listRecommend) {
                 listProduce.add(produceService.findById(r.getRecId()));
             }
-            return JoeJSONResult.ok(listProduce);
-        }
-        return null;
-    }
 
+        }
+        PageInfo pageInfo = new PageInfo(listProduce);
+        return JoeJSONResult.ok(pageInfo);
+    }
 }

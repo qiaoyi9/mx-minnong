@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: zhl
@@ -35,6 +36,7 @@ public class AdvertisementController {
     @RequestMapping("findByState")
     public JoeJSONResult findByState(@RequestParam("adverState") Integer adverState){
         //ADVERTISEMENT_FINDALLBYCONDITION
+        Set<String> keys=redisUtil.keys("BaseClassRedisKey.ADVERTISEMENT_FINDALLBYCONDITION*");
         List<Advertisement>  Advertisements=advertisementService.findByState(adverState);
         for (Advertisement advertisement:Advertisements) {
             if(redisUtil.existsKey(BaseClassRedisKey.ADVERTISEMENT_FINDALLBYCONDITION+advertisement.getAdverProid())){

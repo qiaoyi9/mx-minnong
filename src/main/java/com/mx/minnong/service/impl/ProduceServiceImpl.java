@@ -21,6 +21,7 @@ import java.util.List;
 @Slf4j
 public class ProduceServiceImpl implements ProduceService {
 
+
     @Autowired
     private ProduceMapper produceMapper;
 
@@ -35,7 +36,6 @@ public class ProduceServiceImpl implements ProduceService {
 
     @Override
     public List<Produce> findAllByCondition(ProduceVO produceVO) {
-        System.out.println(produceVO.getPageNum()+produceVO.getPageSize());
         //使用分页插件,核心代码就这一行
         PageHelper.startPage(produceVO.getPageNum(), produceVO.getPageSize());
         return produceMapper.findAllByCondition(produceVO);
@@ -48,5 +48,13 @@ public class ProduceServiceImpl implements ProduceService {
             throw new NetException(NetEnum.CLASS_ID_ISNOTEMPTY);
         }
         return produceMapper.findById(proId);
+    }
+
+    @Override
+    public List<Produce> findHot() {
+        List<Produce> lists  =produceMapper.selectAll();
+
+        return null;
+
     }
 }

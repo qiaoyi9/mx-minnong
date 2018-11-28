@@ -117,5 +117,13 @@ public class RedisUtil<T>{
         redisTemplate.opsForHash().putAll(key, map);
     }
 
-
+    /**
+     * 取hash
+     *
+     * @param pattern
+     */
+    public Set<String> keys(String pattern) {
+       return  redisTemplate.keys(pattern);
+    }
+    //keys
 }

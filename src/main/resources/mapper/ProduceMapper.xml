@@ -30,13 +30,13 @@
   </select>
   <select id="findAllByCondition" parameterType="com.mx.minnong.pojo.vo.ProduceVO" resultMap="BaseResultMap">
     SELECT * FROM Produce where
-    <if test="proName!=null">pro_name like "%"#{proName}"%" and</if>
-    <if test="proClassify!=null">pro_classify=#{proClassify} and</if>
-    <if test="proSclassify!=null">pro_sclassify=#{proSclassify} and</if>
-    <if test="proProvince!=null">pro_province=#{proProvince} and</if>
-    <if test="proCity!=null">pro_city=#{proCity} and</if>
-    <if test="proDistrict!=null">pro_district=#{proDistrict} and</if>
-    <if test="proKind!=null">pro_kind=#{proKind} and</if>
+    <if test="proName!=null and proName!=''">pro_name like "%"#{proName}"%" and</if>
+    <if test="proClassify!=null ">pro_classify=#{proClassify} and</if>
+    <if test="proSclassify!=null ">pro_sclassify=#{proSclassify} and</if>
+    <if test="proProvince!=null and proProvince!=''">pro_province=#{proProvince} and</if>
+    <if test="proCity!=null and proCity!=''">pro_city=#{proCity} and</if>
+    <if test="proDistrict!=null and proDistrict!=''">pro_district=#{proDistrict} and</if>
+    <if test="proKind!=null ">pro_kind=#{proKind} and</if>
     <if test="proLowest!=null">pro_price >= #{proLowest} and</if>
     <if test="proHighest!=null">
       pro_price &lt;= #{proHighest} and

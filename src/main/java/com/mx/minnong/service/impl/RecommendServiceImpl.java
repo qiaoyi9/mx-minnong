@@ -1,8 +1,10 @@
 package com.mx.minnong.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.mx.minnong.mapper.ProduceMapper;
 import com.mx.minnong.mapper.RecommendMapper;
 import com.mx.minnong.pojo.Recommend;
+import com.mx.minnong.pojo.vo.PageVo;
 import com.mx.minnong.service.RecommendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class RecommendServiceImpl implements RecommendService {
     //获得所有推荐产品
     @Override
     @Transactional
-    public List<Recommend> findAll() {
+    public List<Recommend> findAll(PageVo pageVo) {
         List<Recommend> list=new ArrayList<>();
         list=recommendMapper.selectAll();
         Recommend recommend;
@@ -43,6 +45,8 @@ public class RecommendServiceImpl implements RecommendService {
                 it.remove();
             }
         }
+        //使用分页插件,核心代码就这一行
+        PageHelper.startPage(pageVo.getPageNum(), pageVo.getPageSize());
         return list;
     }
 
