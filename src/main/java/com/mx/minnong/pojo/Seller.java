@@ -58,10 +58,10 @@ public class Seller {
     private String selAdvertisement;
 
     /**
-     * 是否会员  1.是  2.否
+     * 是否会员  1.是  0.否
      */
     @Column(name = "sel_ismem")
-    private Integer selIsmem;
+    private boolean selIsmem;
 
     /**
      * 最后登录ip
@@ -85,7 +85,7 @@ public class Seller {
      * 是否验证
      */
     @Column(name = "sel_frozen")
-    private Byte selFrozen;
+    private boolean selFrozen;
 
     /**
      * @return sel_id
@@ -246,20 +246,20 @@ public class Seller {
     }
 
     /**
-     * 获取是否会员  1.是  2.否
+     * 获取是否会员  1.是  0.否
      *
-     * @return sel_ismem - 是否会员  1.是  2.否
+     * @return sel_ismem - 是否会员  1.是  0.否
      */
-    public Integer getSelIsmem() {
+    public boolean isSelIsmem() {
         return selIsmem;
     }
 
     /**
-     * 设置是否会员  1.是  2.否
+     * 设置是否会员  1.是  0.否
      *
-     * @param selIsmem 是否会员  1.是  2.否
+     * @param selIsmem 是否会员  1.是  0.否
      */
-    public void setSelIsmem(Integer selIsmem) {
+    public void setSelIsmem(boolean selIsmem) {
         this.selIsmem = selIsmem;
     }
 
@@ -322,7 +322,7 @@ public class Seller {
      *
      * @return sel_frozen - 是否验证
      */
-    public Byte getSelFrozen() {
+    public boolean isSelFrozen() {
         return selFrozen;
     }
 
@@ -331,7 +331,7 @@ public class Seller {
      *
      * @param selFrozen 是否验证
      */
-    public void setSelFrozen(Byte selFrozen) {
+    public void setSelFrozen(boolean selFrozen) {
         this.selFrozen = selFrozen;
     }
 }

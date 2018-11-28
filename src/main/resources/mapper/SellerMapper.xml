@@ -14,7 +14,7 @@
     <result column="sel_produceid" property="selProduceid" jdbcType="VARCHAR" />
     <result column="sel_base" property="selBase" jdbcType="VARCHAR" />
     <result column="sel_advertisement" property="selAdvertisement" jdbcType="VARCHAR" />
-    <result column="sel_ismem" property="selIsmem" jdbcType="INTEGER" />
+    <result column="sel_ismem" property="selIsmem" jdbcType="TINYINT" />
     <result column="sel_lastIp" property="selLastip" jdbcType="VARCHAR" />
     <result column="sel_lastLoginTime" property="selLastlogintime" jdbcType="TIMESTAMP" />
     <result column="sel_createTime" property="selCreatetime" jdbcType="TIMESTAMP" />
