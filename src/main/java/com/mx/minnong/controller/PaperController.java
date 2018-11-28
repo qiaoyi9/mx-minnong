@@ -7,7 +7,10 @@ import com.mx.minnong.service.PaperService;
 import com.mx.minnong.utils.JoeJSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -68,5 +71,13 @@ public class PaperController {
         List<Paper> papers = paperService.findAll(pageVo);
         PageInfo pageInfo = new PageInfo(papers);
         return JoeJSONResult.ok(pageInfo);
+    }
+
+    @RequestMapping(value = "file" ,method = RequestMethod.POST)
+    public JoeJSONResult file(MultipartFile file) throws IOException {
+        File dest = new File("G:/图片/yasuo/" + file.getOriginalFilename());
+        //Thumbnails.of(file.getInputStream()).scale(1f).outputQuality(0.25f).toFile(dest);
+        file.transferTo(dest);
+        return JoeJSONResult.ok(dest.toString());
     }
 }
