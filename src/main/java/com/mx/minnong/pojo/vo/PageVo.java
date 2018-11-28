@@ -1,6 +1,5 @@
 package com.mx.minnong.pojo.vo;
 
-import lombok.Data;
 
 /**
  * @Author: 乔一 https://www.joejay.cn
@@ -37,4 +36,11 @@ public class PageVo {
     public PageVo() {
     }
 
+    @Override
+    public String toString() {
+        return "PageVo{" +
+                "pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                '}';
+    }
 }

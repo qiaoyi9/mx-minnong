@@ -9,7 +9,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.0.248:3306/minnong?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=UTC
+    url: jdbc:mysql://192.168.0.248:3306/minnong?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Hongkong
     username: root
     password: edwin
     type: com.zaxxer.hikari.HikariDataSource
