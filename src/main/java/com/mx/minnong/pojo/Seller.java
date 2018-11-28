@@ -1,10 +1,10 @@
 package com.mx.minnong.pojo;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.util.Date;
 
 public class Seller {
-
-
     @Id
     @Column(name = "sel_id")
     private Integer selId;
@@ -56,6 +56,36 @@ public class Seller {
      */
     @Column(name = "sel_advertisement")
     private String selAdvertisement;
+
+    /**
+     * 是否会员  1.是  2.否
+     */
+    @Column(name = "sel_ismem")
+    private Integer selIsmem;
+
+    /**
+     * 最后登录ip
+     */
+    @Column(name = "sel_lastIp")
+    private String selLastip;
+
+    /**
+     * 最后一次登录时间
+     */
+    @Column(name = "sel_lastLoginTime")
+    private Date selLastlogintime;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "sel_createTime")
+    private Date selCreatetime;
+
+    /**
+     * 是否验证
+     */
+    @Column(name = "sel_frozen")
+    private Byte selFrozen;
 
     /**
      * @return sel_id
@@ -213,5 +243,95 @@ public class Seller {
      */
     public void setSelAdvertisement(String selAdvertisement) {
         this.selAdvertisement = selAdvertisement;
+    }
+
+    /**
+     * 获取是否会员  1.是  2.否
+     *
+     * @return sel_ismem - 是否会员  1.是  2.否
+     */
+    public Integer getSelIsmem() {
+        return selIsmem;
+    }
+
+    /**
+     * 设置是否会员  1.是  2.否
+     *
+     * @param selIsmem 是否会员  1.是  2.否
+     */
+    public void setSelIsmem(Integer selIsmem) {
+        this.selIsmem = selIsmem;
+    }
+
+    /**
+     * 获取最后登录ip
+     *
+     * @return sel_lastIp - 最后登录ip
+     */
+    public String getSelLastip() {
+        return selLastip;
+    }
+
+    /**
+     * 设置最后登录ip
+     *
+     * @param selLastip 最后登录ip
+     */
+    public void setSelLastip(String selLastip) {
+        this.selLastip = selLastip;
+    }
+
+    /**
+     * 获取最后一次登录时间
+     *
+     * @return sel_lastLoginTime - 最后一次登录时间
+     */
+    public Date getSelLastlogintime() {
+        return selLastlogintime;
+    }
+
+    /**
+     * 设置最后一次登录时间
+     *
+     * @param selLastlogintime 最后一次登录时间
+     */
+    public void setSelLastlogintime(Date selLastlogintime) {
+        this.selLastlogintime = selLastlogintime;
+    }
+
+    /**
+     * 获取创建时间
+     *
+     * @return sel_createTime - 创建时间
+     */
+    public Date getSelCreatetime() {
+        return selCreatetime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param selCreatetime 创建时间
+     */
+    public void setSelCreatetime(Date selCreatetime) {
+        this.selCreatetime = selCreatetime;
+    }
+
+    /**
+     * 获取是否验证
+     *
+     * @return sel_frozen - 是否验证
+     */
+    public Byte getSelFrozen() {
+        return selFrozen;
+    }
+
+    /**
+     * 设置是否验证
+     *
+     * @param selFrozen 是否验证
+     */
+    public void setSelFrozen(Byte selFrozen) {
+        this.selFrozen = selFrozen;
     }
 }

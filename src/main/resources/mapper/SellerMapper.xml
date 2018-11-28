@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="sel_id" property="selId" jdbcType="INTEGER" />
+    <id column="sel_id" property="selId" jdbcType="INTEGER" />
     <result column="sel_psd" property="selPsd" jdbcType="VARCHAR" />
     <result column="sel_name" property="selName" jdbcType="VARCHAR" />
     <result column="sel_contacts" property="selContacts" jdbcType="VARCHAR" />
@@ -14,5 +14,10 @@
     <result column="sel_produceid" property="selProduceid" jdbcType="VARCHAR" />
     <result column="sel_base" property="selBase" jdbcType="VARCHAR" />
     <result column="sel_advertisement" property="selAdvertisement" jdbcType="VARCHAR" />
+    <result column="sel_ismem" property="selIsmem" jdbcType="INTEGER" />
+    <result column="sel_lastIp" property="selLastip" jdbcType="VARCHAR" />
+    <result column="sel_lastLoginTime" property="selLastlogintime" jdbcType="TIMESTAMP" />
+    <result column="sel_createTime" property="selCreatetime" jdbcType="TIMESTAMP" />
+    <result column="sel_frozen" property="selFrozen" jdbcType="TINYINT" />
   </resultMap>
 </mapper>

@@ -1,6 +1,8 @@
 package com.mx.minnong.pojo;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.util.Date;
 
 public class Buyer {
     @Id
@@ -48,6 +50,27 @@ public class Buyer {
      */
     @Column(name = "buy_advertisement")
     private String buyAdvertisement;
+
+    /**
+     * 是否会员  1.是  0.否
+     */
+    @Column(name = "buy_ismem")
+    private Byte buyIsmem;
+
+    /**
+     * 最后登录ip
+     */
+    @Column(name = "buy_lastIp")
+    private String buyLastip;
+
+    @Column(name = "buy_lastLoginTime")
+    private Date buyLastlogintime;
+
+    @Column(name = "buy_createTime")
+    private Date buyCreatetime;
+
+    @Column(name = "buy_frozen")
+    private Byte buyFrozen;
 
     /**
      * @return buy_id
@@ -197,5 +220,83 @@ public class Buyer {
      */
     public void setBuyAdvertisement(String buyAdvertisement) {
         this.buyAdvertisement = buyAdvertisement;
+    }
+
+    /**
+     * 获取是否会员  1.是  0.否
+     *
+     * @return buy_ismem - 是否会员  1.是  0.否
+     */
+    public Byte getBuyIsmem() {
+        return buyIsmem;
+    }
+
+    /**
+     * 设置是否会员  1.是  0.否
+     *
+     * @param buyIsmem 是否会员  1.是  0.否
+     */
+    public void setBuyIsmem(Byte buyIsmem) {
+        this.buyIsmem = buyIsmem;
+    }
+
+    /**
+     * 获取最后登录ip
+     *
+     * @return buy_lastIp - 最后登录ip
+     */
+    public String getBuyLastip() {
+        return buyLastip;
+    }
+
+    /**
+     * 设置最后登录ip
+     *
+     * @param buyLastip 最后登录ip
+     */
+    public void setBuyLastip(String buyLastip) {
+        this.buyLastip = buyLastip;
+    }
+
+    /**
+     * @return buy_lastLoginTime
+     */
+    public Date getBuyLastlogintime() {
+        return buyLastlogintime;
+    }
+
+    /**
+     * @param buyLastlogintime
+     */
+    public void setBuyLastlogintime(Date buyLastlogintime) {
+        this.buyLastlogintime = buyLastlogintime;
+    }
+
+    /**
+     * @return buy_createTime
+     */
+    public Date getBuyCreatetime() {
+        return buyCreatetime;
+    }
+
+    /**
+     * @param buyCreatetime
+     */
+    public void setBuyCreatetime(Date buyCreatetime) {
+        this.buyCreatetime = buyCreatetime;
+    }
+
+    /**
+     * @return buy_frozen
+     */
+    public Byte getBuyFrozen() {
+        return buyFrozen;
+    }
+
+    /**
+     * @param buyFrozen
+     */
+    public void setBuyFrozen(Byte buyFrozen) {
+        this.buyFrozen = buyFrozen;
     }
 }
