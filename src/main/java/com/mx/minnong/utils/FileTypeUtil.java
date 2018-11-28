@@ -24,7 +24,6 @@ public class FileTypeUtil {
     public static String getFileType(String fileName) {
         String[] strArray = fileName.split("\\.");
         int suffixIndex = strArray.length -1;
-        //System.out.println(strArray[suffixIndex]);
         return strArray[suffixIndex];
     }
 
@@ -61,23 +60,6 @@ public class FileTypeUtil {
                 return true;
              default: return false;
         }
-       /* if (fileType.equals("JPG")){
-            return true;
-        }else if (fileType.equals("JPEG")){
-            return true;
-        }else if (fileType.equals("jpg")){
-            return true;
-        }else if (fileType.equals("PNG")){
-            return true;
-        }else if (fileType.equals("png")){
-            return true;
-        }else if (fileType.equals("gif")){
-            return true;
-        }else if (fileType.equals("jpeg")){
-            return true;
-        }else {
-            return false;
-        }*/
     }
 
 }
