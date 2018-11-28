@@ -23,25 +23,25 @@ spring:
       max-lifetime: 28740000
       connection-test-query: SELECT 1
 
-#####设置MultipartFile文件上传大小####
+  #####设置MultipartFile文件上传大小####
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 30MB
 
-#####添加热部署#####
+  #####添加热部署#####
   devtools:
     remote:
       restart:
         enabled: true
 
-####redis配置####
+  ####redis配置####
   redis:
     host: 192.168.0.153
     port: 6379
     password:
 
-#### 邮件配置####
+  #### 邮件配置####
   mail:
     host: smtp.qq.com
     username: 1815066657@qq.com
@@ -81,4 +81,4 @@ fdfs:
     width: 80
     height: 80
   tracker-list:            #TrackerList参数,支持多个
-  - 192.168.0.156:22122
+    - 192.168.0.156:22122
