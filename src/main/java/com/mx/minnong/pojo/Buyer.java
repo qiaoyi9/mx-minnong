@@ -55,7 +55,7 @@ public class Buyer {
      * 是否会员  1.是  0.否
      */
     @Column(name = "buy_ismem")
-    private Byte buyIsmem;
+    private boolean buyIsmem;
 
     /**
      * 最后登录ip
@@ -63,14 +63,23 @@ public class Buyer {
     @Column(name = "buy_lastIp")
     private String buyLastip;
 
+    /**
+     * 最后一次登录时间
+     */
     @Column(name = "buy_lastLoginTime")
     private Date buyLastlogintime;
 
+    /**
+     * 创建时间
+     */
     @Column(name = "buy_createTime")
     private Date buyCreatetime;
 
+    /**
+     * 是否验证
+     */
     @Column(name = "buy_frozen")
-    private Byte buyFrozen;
+    private boolean buyFrozen;
 
     /**
      * @return buy_id
@@ -227,7 +236,7 @@ public class Buyer {
      *
      * @return buy_ismem - 是否会员  1.是  0.否
      */
-    public Byte getBuyIsmem() {
+    public boolean isBuyIsmem() {
         return buyIsmem;
     }
 
@@ -236,7 +245,7 @@ public class Buyer {
      *
      * @param buyIsmem 是否会员  1.是  0.否
      */
-    public void setBuyIsmem(Byte buyIsmem) {
+    public void setBuyIsmem(boolean buyIsmem) {
         this.buyIsmem = buyIsmem;
     }
 
@@ -259,44 +268,56 @@ public class Buyer {
     }
 
     /**
-     * @return buy_lastLoginTime
+     * 获取最后一次登录时间
+     *
+     * @return buy_lastLoginTime - 最后一次登录时间
      */
     public Date getBuyLastlogintime() {
         return buyLastlogintime;
     }
 
     /**
-     * @param buyLastlogintime
+     * 设置最后一次登录时间
+     *
+     * @param buyLastlogintime 最后一次登录时间
      */
     public void setBuyLastlogintime(Date buyLastlogintime) {
         this.buyLastlogintime = buyLastlogintime;
     }
 
     /**
-     * @return buy_createTime
+     * 获取创建时间
+     *
+     * @return buy_createTime - 创建时间
      */
     public Date getBuyCreatetime() {
         return buyCreatetime;
     }
 
     /**
-     * @param buyCreatetime
+     * 设置创建时间
+     *
+     * @param buyCreatetime 创建时间
      */
     public void setBuyCreatetime(Date buyCreatetime) {
         this.buyCreatetime = buyCreatetime;
     }
 
     /**
-     * @return buy_frozen
+     * 获取是否验证
+     *
+     * @return buy_frozen - 是否验证
      */
-    public Byte getBuyFrozen() {
+    public boolean isBuyFrozen() {
         return buyFrozen;
     }
 
     /**
-     * @param buyFrozen
+     * 设置是否验证
+     *
+     * @param buyFrozen 是否验证
      */
-    public void setBuyFrozen(Byte buyFrozen) {
+    public void setBuyFrozen(boolean buyFrozen) {
         this.buyFrozen = buyFrozen;
     }
 }
