@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.mx.minnong.pojo.Paper;
 import com.mx.minnong.pojo.vo.PageVo;
 import com.mx.minnong.service.PaperService;
+import com.mx.minnong.utils.FastDFSClient;
 import com.mx.minnong.utils.JoeJSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,9 @@ public class PaperController {
 
     @Autowired
     private PaperService paperService;
+
+    @Autowired
+    private FastDFSClient fastDFSClient;
 
     /**
      * @param: id
@@ -75,9 +79,7 @@ public class PaperController {
 
     @RequestMapping(value = "file" ,method = RequestMethod.POST)
     public JoeJSONResult file(MultipartFile file) throws IOException {
-        File dest = new File("G:/图片/yasuo/" + file.getOriginalFilename());
-        //Thumbnails.of(file.getInputStream()).scale(1f).outputQuality(0.25f).toFile(dest);
-        file.transferTo(dest);
-        return JoeJSONResult.ok(dest.toString());
+        String url = fastDFSClient.uploadFile(file);
+        return JoeJSONResult.ok(url);
     }
 }
