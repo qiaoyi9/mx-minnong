@@ -13,7 +13,6 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 public class GeneratorDisplay {
 
 	public void generator() throws Exception{
-
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		File configFile = new File("generatorConfig.xml");

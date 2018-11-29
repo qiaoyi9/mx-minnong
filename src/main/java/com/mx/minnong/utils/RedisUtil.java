@@ -1,6 +1,5 @@
 package com.mx.minnong.utils;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -118,12 +117,32 @@ public class RedisUtil<T>{
     }
 
     /**
-     * 取hash
+     * 取keys
      *
      * @param pattern
      */
     public Set<String> keys(String pattern) {
        return  redisTemplate.keys(pattern);
     }
-    //keys
+
+    /**
+     * 存zset
+     *
+     * @param key
+     * @param score
+     * @param member
+     *
+     */
+    public void zadd(String key, Object score,Integer member ){
+        redisTemplate.opsForZSet().add(key,score,member);
+    }
+
+    /**
+     * 逆序取zset
+     * @param  key
+     * @param topNum
+     */
+    public Set<Object> reverseRange(String key,Integer topNum) {
+        return redisTemplate.opsForZSet().reverseRange(key,0,topNum);
+    }
 }

@@ -13,6 +13,16 @@ public class PageVo {
 
     private Integer pageSize = 10;
 
+    private Integer topNum=10;//前多少条数据
+
+    public Integer getTopNum() {
+        return topNum;
+    }
+
+    public void setTopNum(Integer topNum) {
+        this.topNum = topNum;
+    }
+
     public PageVo(Integer pageNum, Integer pageSize) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;

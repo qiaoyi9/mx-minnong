@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mx.minnong.mapper.PurchaseMapper" >
+  <resultMap id="BaseResultMap" type="com.mx.minnong.pojo.Purchase" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pur_id" property="purId" jdbcType="INTEGER" />
+    <result column="pur_produce" property="purProduce" jdbcType="VARCHAR" />
+    <result column="pur_buyid" property="purBuyid" jdbcType="INTEGER" />
+    <result column="per_status" property="perStatus" jdbcType="INTEGER" />
+    <result column="pur_number" property="purNumber" jdbcType="VARCHAR" />
+    <result column="pur_begin" property="purBegin" jdbcType="DATE" />
+    <result column="pur_endtime" property="purEndtime" jdbcType="DATE" />
+    <result column="pur_address" property="purAddress" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

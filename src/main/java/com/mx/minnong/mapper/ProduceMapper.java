@@ -16,4 +16,6 @@ public interface ProduceMapper extends MyMapper<Produce> {
     //根据产品Id 获得产品
     Produce findById(Integer proId);
 
+    //根据proBrowse获得前多少热门产品
+    List<Produce>  findHot(Integer topNum);
 }

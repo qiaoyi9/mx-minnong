@@ -23,10 +23,11 @@
     <result column="pro_yield" property="proYield" jdbcType="VARCHAR" />
     <result column="pro_kind" property="proKind" jdbcType="INTEGER" />
     <result column="pro_content" property="proContent" jdbcType="LONGVARCHAR" />
+    <result column="pro_unit" property="proUnit" jdbcType="VARCHAR" />
   </resultMap>
 
   <select id="findAllRecommend" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select * from Produce  where pro_recommend=#{pro_recommend};
+    select * from Produce  where pro_recommend=#{proRecommend};
   </select>
   <select id="findAllByCondition" parameterType="com.mx.minnong.pojo.vo.ProduceVO" resultMap="BaseResultMap">
     SELECT * FROM Produce where
@@ -46,4 +47,8 @@
   <select id="findById" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
     select * from Produce where pro_id=#{proId}
   </select>
+
+   <select id="findHot" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+       select * from Produce order by pro_browse desc limit #{topNum}
+   </select>
 </mapper>

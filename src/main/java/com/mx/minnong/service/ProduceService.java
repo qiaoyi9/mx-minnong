@@ -5,6 +5,7 @@ package com.mx.minnong.service;
  */
 
 import com.mx.minnong.pojo.Produce;
+import com.mx.minnong.pojo.vo.PageVo;
 import com.mx.minnong.pojo.vo.ProduceVO;
 
 import java.util.List;
@@ -20,5 +21,5 @@ public interface ProduceService {
     Produce findById(Integer proId);
 
     //获得热门产品
-    List<Produce> findHot();
+    List<Produce> findHot(PageVo pageVo);
 }

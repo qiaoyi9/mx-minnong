@@ -1,8 +1,11 @@
 package com.mx.minnong.pojo;
 
+import com.mx.minnong.pojo.vo.SellerVo;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 public class Produce implements Serializable {
@@ -18,6 +21,33 @@ public class Produce implements Serializable {
      */
     @Column(name = "pro_name")
     private String proName;
+
+    /**
+     * 卖家
+     */
+    private SellerVo sellerVo;
+
+    /**
+     * 产品图片
+     * @return
+     */
+    private List<Proimg> proimgs;
+
+    public List<Proimg> getProimgs() {
+        return proimgs;
+    }
+
+    public void setProimgs(List<Proimg> proimgs) {
+        this.proimgs = proimgs;
+    }
+
+    public SellerVo getSellerVo() {
+        return sellerVo;
+    }
+
+    public void setSellerVo(SellerVo sellerVo) {
+        this.sellerVo = sellerVo;
+    }
 
     /**
      * 所属大分类
@@ -101,7 +131,7 @@ public class Produce implements Serializable {
      * 数量+单位  eg:50万吨
      */
     @Column(name = "pro_yield")
-    private String proYield;
+    private Integer proYield;
 
     /**
      * 商品种类
@@ -110,10 +140,23 @@ public class Produce implements Serializable {
     private Integer proKind;
 
     /**
+     * 商品单位
+     */
+    @Column(name="pro_unit")
+    private String proUnit;
+    /**
      * 详细介绍
      */
     @Column(name = "pro_content")
     private String proContent;
+
+    public String getProUnit() {
+        return proUnit;
+    }
+
+    public void setProUnit(String proUnit) {
+        this.proUnit = proUnit;
+    }
 
     /**
      * @return pro_id
@@ -386,7 +429,7 @@ public class Produce implements Serializable {
      *
      * @return pro_yield - 数量+单位  eg:50万吨
      */
-    public String getProYield() {
+    public Integer getProYield() {
         return proYield;
     }
 
@@ -395,7 +438,7 @@ public class Produce implements Serializable {
      *
      * @param proYield 数量+单位  eg:50万吨
      */
-    public void setProYield(String proYield) {
+    public void setProYield(Integer proYield) {
         this.proYield = proYield;
     }
 

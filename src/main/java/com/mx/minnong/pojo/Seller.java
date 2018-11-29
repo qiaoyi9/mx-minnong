@@ -334,4 +334,24 @@ public class Seller {
     public void setSelFrozen(boolean selFrozen) {
         this.selFrozen = selFrozen;
     }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "selId=" + selId +
+                ", selPsd='" + selPsd + '\'' +
+                ", selName='" + selName + '\'' +
+                ", selContacts='" + selContacts + '\'' +
+                ", selTel='" + selTel + '\'' +
+                ", selEmail='" + selEmail + '\'' +
+                ", selProduceid='" + selProduceid + '\'' +
+                ", selBase='" + selBase + '\'' +
+                ", selAdvertisement='" + selAdvertisement + '\'' +
+                ", selIsmem=" + selIsmem +
+                ", selLastip='" + selLastip + '\'' +
+                ", selLastlogintime=" + selLastlogintime +
+                ", selCreatetime=" + selCreatetime +
+                ", selFrozen=" + selFrozen +
+                '}';
+    }
 }

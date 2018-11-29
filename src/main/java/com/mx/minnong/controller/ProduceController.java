@@ -1,7 +1,10 @@
 package com.mx.minnong.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.mx.minnong.mapper.SellerMapper;
 import com.mx.minnong.pojo.Produce;
+import com.mx.minnong.pojo.Seller;
+import com.mx.minnong.pojo.vo.PageVo;
 import com.mx.minnong.pojo.vo.ProduceVO;
 import com.mx.minnong.service.ProduceService;
 import com.mx.minnong.utils.BaseClassRedisKey;
@@ -32,14 +35,22 @@ public class ProduceController {
     @Autowired
     private ProduceService produceService;
 
+
     @RequestMapping(value ="findAllByCondition01")
-    public JoeJSONResult findAllByCondition01(ProduceVO produceVO) throws IllegalAccessException{
+    public JoeJSONResult findAllByCondition01(ProduceVO produceVO){
         List<Produce> produces = produceService.findAllByCondition(produceVO);
         PageInfo pageInfo=new PageInfo(produces);
         return JoeJSONResult.ok(pageInfo);
     }
 
-    /*
+    @RequestMapping("findHot")
+    public JoeJSONResult findHot(PageVo pageVo){
+        List<Produce> produces= produceService.findHot(pageVo);
+        PageInfo pageInfo =new PageInfo(produces);
+        return JoeJSONResult.ok(pageInfo);
+    }
+
+    /**
      * 根据大类小类种类和省份市区价格条件获得产品  pro_lowest最低价格 pro_highest最高价格
      */
     @RequestMapping(value ="findAllByCondition")
@@ -72,8 +83,16 @@ public class ProduceController {
         } else {
             produces = produceService.findAllByCondition(produceVO);
         }
+
         PageInfo pageInfo=new PageInfo(produces);
         return JoeJSONResult.ok(pageInfo);
+    }
+
+    //根据ID获得商品
+    @RequestMapping(value ="findById")
+    public JoeJSONResult findById(@RequestParam("proId") Integer proId){
+        Produce produce=produceService.findById(proId);
+        return JoeJSONResult.ok(produce);
     }
 
 

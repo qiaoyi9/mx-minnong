@@ -20,6 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/recommend/")
+@Slf4j
 public class RecommendController {
     @Autowired
     private RecommendService recommendService;
@@ -37,7 +38,6 @@ public class RecommendController {
             for (Recommend r : listRecommend) {
                 listProduce.add(produceService.findById(r.getRecId()));
             }
-
         }
         PageInfo pageInfo = new PageInfo(listProduce);
         return JoeJSONResult.ok(pageInfo);

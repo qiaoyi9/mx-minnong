@@ -26,9 +26,10 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     @Override
     @Transactional
     public List<Advertisement> findByState(Integer adverState) {
+        System.out.println(adverState);
         Advertisement advertisement=null;
         List<Advertisement> advertisements= advertisementMapper.findByState(adverState);
-        if(adverState==1){
+        if( adverState!=null  && adverState==1 ){
             Iterator<Advertisement> iterator=advertisements.iterator();
             while(iterator.hasNext()){
                 advertisement=iterator.next();

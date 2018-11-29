@@ -28,7 +28,7 @@
         <javaClientGenerator targetPackage="com.mx.minnong.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
 
-		<table tableName="paper"></table>
+		<table tableName="proimg"></table>
 
 		 
     </context>
