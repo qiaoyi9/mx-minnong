@@ -32,11 +32,27 @@ public class Advertisement {
     @Column(name = "adver_state")
     private Integer adverState;
 
+
+
     /**
      * 投放位置
      */
     @Column(name = "adver_position")
     private Integer adverPosition;
+
+
+    /**
+     * 商品
+     */
+    private Produce produce;
+
+    public Produce getProduce() {
+        return produce;
+    }
+
+    public void setProduce(Produce produce) {
+        this.produce = produce;
+    }
 
     /**
      * @return adver_id

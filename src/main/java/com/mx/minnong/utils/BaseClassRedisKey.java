@@ -18,7 +18,7 @@ public class BaseClassRedisKey {
     public static final String PRODUCECLASS_FINDALLBYCONDITIONNULL = "ProduceClass/findAllByConditionNull_key";
 
     public static final String ADVERTISEMENT_FINDALLBYCONDITION = "Advertisement/findAllByCondition_key";
-    public static final String BASECLASS_PRODUCEFINDHOTID ="Produce/findHotId_key";
+    public static final String BASECLASS_PRODUCEIDVIEWS ="Produce/produceIdViews_key";
     public static final String BASECLASS_PRODUCEFINDHOT ="Produce/findHot_key";
 
 

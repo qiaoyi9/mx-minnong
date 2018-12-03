@@ -238,4 +238,32 @@ public class ProduceVO {
 
     public ProduceVO() {
     }
+
+    @Override
+    public String toString() {
+        return "ProduceVO{" +
+                "proId=" + proId +
+                ", proName='" + proName + '\'' +
+                ", proClassify=" + proClassify +
+                ", proImg='" + proImg + '\'' +
+                ", proSclassify=" + proSclassify +
+                ", proUptimte=" + proUptimte +
+                ", proRecommend=" + proRecommend +
+                ", proProvince='" + proProvince + '\'' +
+                ", proCity='" + proCity + '\'' +
+                ", proDistrict='" + proDistrict + '\'' +
+                ", proSeller=" + proSeller +
+                ", proBase=" + proBase +
+                ", proAuditing=" + proAuditing +
+                ", proBrowse=" + proBrowse +
+                ", proPrice=" + proPrice +
+                ", proYield='" + proYield + '\'' +
+                ", proKind=" + proKind +
+                ", proContent='" + proContent + '\'' +
+                ", proLowest=" + proLowest +
+                ", proHighest=" + proHighest +
+                ", pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                '}';
+    }
 }

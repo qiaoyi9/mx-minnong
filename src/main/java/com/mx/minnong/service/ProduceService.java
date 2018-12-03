@@ -22,4 +22,8 @@ public interface ProduceService {
 
     //获得热门产品
     List<Produce> findHot(PageVo pageVo);
+
+    //根据卖家ID获得商品
+    List<Produce> findByProseller(PageVo pageVo,Integer proSeller);
+
 }

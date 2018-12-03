@@ -27,6 +27,14 @@ public class Produce implements Serializable {
      */
     private SellerVo sellerVo;
 
+    public SellerVo getSellerVo() {
+        return sellerVo;
+    }
+
+    public void setSellerVo(SellerVo sellerVo) {
+        this.sellerVo = sellerVo;
+    }
+
     /**
      * 产品图片
      * @return
@@ -39,14 +47,6 @@ public class Produce implements Serializable {
 
     public void setProimgs(List<Proimg> proimgs) {
         this.proimgs = proimgs;
-    }
-
-    public SellerVo getSellerVo() {
-        return sellerVo;
-    }
-
-    public void setSellerVo(SellerVo sellerVo) {
-        this.sellerVo = sellerVo;
     }
 
     /**

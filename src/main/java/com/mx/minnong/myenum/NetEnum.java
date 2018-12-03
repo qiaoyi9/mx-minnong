@@ -16,7 +16,8 @@ public enum NetEnum {
     ID_ISEMPTY(403,"主键不能为空"),
     PRO_RECOMMEND_ISNOTEMPTY(403,"推荐标识不能为空"),
     PRODUCE_ID_ISNOTEMPTY(403,"产品id不能为空"),
-    PROIMGPRO_ISNOTEMPTY(403,"产品id不能为空")
+    PROIMGPRO_ISNOTEMPTY(403,"产品id不能为空"),
+    PROSELLER_ISNOTEMPTY(403,"卖家id不能为空")
     ;
     private Integer code;
 

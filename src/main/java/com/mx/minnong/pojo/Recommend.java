@@ -26,6 +26,20 @@ public class Recommend {
     @Column(name = "ren_endtime")
     private Date renEndtime;
 
+
+    /**
+     * 产品
+     */
+    private Produce produce;
+
+    public Produce getProduce() {
+        return produce;
+    }
+
+    public void setProduce(Produce produce) {
+        this.produce = produce;
+    }
+
     /**
      * @return rec_id
      */

@@ -133,8 +133,8 @@ public class RedisUtil<T>{
      * @param member
      *
      */
-    public void zadd(String key, Object score,Integer member ){
-        redisTemplate.opsForZSet().add(key,score,member);
+    public void zadd(String key, Object member,Integer  score ){
+        redisTemplate.opsForZSet().add(key,member,score);
     }
 
     /**
@@ -144,5 +144,19 @@ public class RedisUtil<T>{
      */
     public Set<Object> reverseRange(String key,Integer topNum) {
         return redisTemplate.opsForZSet().reverseRange(key,0,topNum);
+    }
+
+    /**
+     * score加一
+     */
+    public void incr(String key,Object member){
+        redisTemplate.opsForZSet().incrementScore(key,member,1);
+    }
+
+    /**
+     * 存set
+     */
+    public Long sadd(String key,Object obj){
+       return redisTemplate.opsForSet().add(key,obj);
     }
 }

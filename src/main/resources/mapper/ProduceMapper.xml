@@ -24,13 +24,21 @@
     <result column="pro_kind" property="proKind" jdbcType="INTEGER" />
     <result column="pro_content" property="proContent" jdbcType="LONGVARCHAR" />
     <result column="pro_unit" property="proUnit" jdbcType="VARCHAR" />
+    <!--<association property="seller" column="proSeller"  select="com.mx.minnong.mapper.SellerMapper.findById"></association>-->
+    <association property="sellerVo" javaType="com.mx.minnong.pojo.vo.SellerVo">
+        <id column="sel_id" property="selId" jdbcType="INTEGER" />
+        <result column="sel_name" property="selName" jdbcType="VARCHAR" />
+        <result column="sel_contacts" property="selContacts" jdbcType="VARCHAR" />
+        <result column="sel_tel" property="selTel" jdbcType="VARCHAR" />
+        <result column="sel_email" property="selEmail" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
 
   <select id="findAllRecommend" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from Produce  where pro_recommend=#{proRecommend};
   </select>
   <select id="findAllByCondition" parameterType="com.mx.minnong.pojo.vo.ProduceVO" resultMap="BaseResultMap">
-    SELECT * FROM Produce where
+    SELECT * FROM Produce a join seller b on a.pro_seller=b.sel_id where
     <if test="proName!=null and proName!=''">pro_name like "%"#{proName}"%" and</if>
     <if test="proClassify!=null ">pro_classify=#{proClassify} and</if>
     <if test="proSclassify!=null ">pro_sclassify=#{proSclassify} and</if>
@@ -51,4 +59,8 @@
    <select id="findHot" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
        select * from Produce order by pro_browse desc limit #{topNum}
    </select>
+  
+  <select id="findByProseller" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select  * from Produce where pro_Seller=#{proSeller}
+  </select>
 </mapper>
