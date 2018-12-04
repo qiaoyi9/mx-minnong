@@ -1,7 +1,7 @@
 package com.mx.minnong.service;
 
 import com.mx.minnong.pojo.Recommend;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 
 import java.util.List;
 
@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface RecommendService {
     //获得所有推荐产品
-    List<Recommend> findAll(PageVo pageVo);
+    List<Recommend> finAllByProduce(PageQO pageQO);
 
 }

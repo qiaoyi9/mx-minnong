@@ -1,8 +1,7 @@
-package com.mx.minnong.pojo.vo;
+package com.mx.minnong.pojo.qo;
 /*
  * 用于接收前台产品查询条件
  */
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,7 +10,7 @@ import java.util.Date;
  * @Author: zhl
  * @Date: Createdtime 2018/11/23 15:19
  */
-public class ProduceVO {
+public class ProduceQO {
     private Integer proId;
     private String proName;
     private Integer proClassify;
@@ -211,7 +210,7 @@ public class ProduceVO {
         this.proHighest = proHighest;
     }
 
-    public ProduceVO(Integer proId, String proName, Integer proClassify, String proImg, Integer proSclassify, Date proUptimte, Integer proRecommend, String proProvince, String proCity, String proDistrict, Integer proSeller, Integer proBase, Integer proAuditing, Integer proBrowse, BigDecimal proPrice, String proYield, Integer proKind, String proContent, Integer proLowest, Integer proHighest, Integer pageNum, Integer pageSize) {
+    public ProduceQO(Integer proId, String proName, Integer proClassify, String proImg, Integer proSclassify, Date proUptimte, Integer proRecommend, String proProvince, String proCity, String proDistrict, Integer proSeller, Integer proBase, Integer proAuditing, Integer proBrowse, BigDecimal proPrice, String proYield, Integer proKind, String proContent, Integer proLowest, Integer proHighest, Integer pageNum, Integer pageSize) {
         this.proId = proId;
         this.proName = proName;
         this.proClassify = proClassify;
@@ -236,34 +235,7 @@ public class ProduceVO {
         this.pageSize = pageSize;
     }
 
-    public ProduceVO() {
+    public ProduceQO() {
     }
 
-    @Override
-    public String toString() {
-        return "ProduceVO{" +
-                "proId=" + proId +
-                ", proName='" + proName + '\'' +
-                ", proClassify=" + proClassify +
-                ", proImg='" + proImg + '\'' +
-                ", proSclassify=" + proSclassify +
-                ", proUptimte=" + proUptimte +
-                ", proRecommend=" + proRecommend +
-                ", proProvince='" + proProvince + '\'' +
-                ", proCity='" + proCity + '\'' +
-                ", proDistrict='" + proDistrict + '\'' +
-                ", proSeller=" + proSeller +
-                ", proBase=" + proBase +
-                ", proAuditing=" + proAuditing +
-                ", proBrowse=" + proBrowse +
-                ", proPrice=" + proPrice +
-                ", proYield='" + proYield + '\'' +
-                ", proKind=" + proKind +
-                ", proContent='" + proContent + '\'' +
-                ", proLowest=" + proLowest +
-                ", proHighest=" + proHighest +
-                ", pageNum=" + pageNum +
-                ", pageSize=" + pageSize +
-                '}';
-    }
 }

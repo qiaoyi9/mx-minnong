@@ -10,5 +10,6 @@
     <result column="com_advert" property="comAdvert" jdbcType="INTEGER" />
     <result column="com_recommend" property="comRecommend" jdbcType="INTEGER" />
     <result column="com_content" property="comContent" jdbcType="LONGVARCHAR" />
+    <result column="com_img" property="comImg" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

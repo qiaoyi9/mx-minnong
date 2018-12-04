@@ -2,7 +2,7 @@ package com.mx.minnong.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.mx.minnong.pojo.Recommend;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 import com.mx.minnong.service.RecommendService;
 import com.mx.minnong.utils.JoeJSONResult;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +26,9 @@ public class RecommendController {
 
 
     //首页产品推荐
-    @RequestMapping("findAll")
-    public JoeJSONResult findAll(PageVo pageVo) {
-        List<Recommend> recommends=recommendService.findAll(pageVo);
+    @RequestMapping("finAllByProduce")
+    public JoeJSONResult finAllByProduce(PageQO pageQO) {
+        List<Recommend> recommends=recommendService.finAllByProduce(pageQO);
         PageInfo pageInfo = new PageInfo(recommends);
         return JoeJSONResult.ok(pageInfo);
     }

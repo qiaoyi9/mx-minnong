@@ -5,7 +5,7 @@ import com.mx.minnong.exception.NetException;
 import com.mx.minnong.mapper.PaperMapper;
 import com.mx.minnong.myenum.NetEnum;
 import com.mx.minnong.pojo.Paper;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 import com.mx.minnong.service.PaperService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +60,8 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public List<Paper> findAll(PageVo pageVo) {
-        PageHelper.startPage(pageVo.getPageNum(),pageVo.getPageSize());
+    public List<Paper> findAll(PageQO pageQO) {
+        PageHelper.startPage(pageQO.getPageNum(),pageQO.getPageSize());
         return paperMapper.selectAll();
     }
 }

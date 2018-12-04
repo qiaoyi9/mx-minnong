@@ -20,7 +20,4 @@
     <result column="sel_createTime" property="selCreatetime" jdbcType="TIMESTAMP" />
     <result column="sel_frozen" property="selFrozen" jdbcType="TINYINT" />
   </resultMap>
-  <!--<select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-      select * from seller where sel_id=#{selId}
-  </select>-->
 </mapper>

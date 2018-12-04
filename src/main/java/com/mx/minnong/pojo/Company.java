@@ -32,6 +32,20 @@ public class Company {
     private String comContent;
 
     /**
+     *  企业头图
+     */
+    @Column(name = "com_img")
+    private String comImg;
+
+    public String getComImg() {
+        return comImg;
+    }
+
+    public void setComImg(String comImg) {
+        this.comImg = comImg;
+    }
+
+    /**
      * @return com_id
      */
     public Integer getComId() {

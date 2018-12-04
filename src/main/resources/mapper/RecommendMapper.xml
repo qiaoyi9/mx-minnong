@@ -9,5 +9,29 @@
     <result column="rec_proid" property="recProid" jdbcType="INTEGER" />
     <result column="rec_begintime" property="recBegintime" jdbcType="TIMESTAMP" />
     <result column="ren_endtime" property="renEndtime" jdbcType="TIMESTAMP" />
+    <association property="produce"  javaType="com.mx.minnong.pojo.Produce" >
+      <id column="pro_id" property="proId" jdbcType="INTEGER" />
+      <result column="pro_name" property="proName" jdbcType="VARCHAR" />
+      <result column="pro_classify" property="proClassify" jdbcType="INTEGER" />
+      <result column="pro_img" property="proImg" jdbcType="VARCHAR" />
+      <result column="pro_sclassify" property="proSclassify" jdbcType="INTEGER" />
+      <result column="pro_uptimte" property="proUptimte" jdbcType="TIMESTAMP" />
+      <result column="pro_recommend" property="proRecommend" jdbcType="INTEGER" />
+      <result column="pro_province" property="proProvince" jdbcType="VARCHAR" />
+      <result column="pro_city" property="proCity" jdbcType="VARCHAR" />
+      <result column="pro_district" property="proDistrict" jdbcType="VARCHAR" />
+      <result column="pro_seller" property="proSeller" jdbcType="INTEGER" />
+      <result column="pro_base" property="proBase" jdbcType="INTEGER" />
+      <result column="pro_auditing" property="proAuditing" jdbcType="INTEGER" />
+      <result column="pro_browse" property="proBrowse" jdbcType="INTEGER" />
+      <result column="pro_price" property="proPrice" jdbcType="DECIMAL" />
+      <result column="pro_yield" property="proYield" jdbcType="VARCHAR" />
+      <result column="pro_kind" property="proKind" jdbcType="INTEGER" />
+      <result column="pro_content" property="proContent" jdbcType="LONGVARCHAR" />
+      <result column="pro_unit" property="proUnit" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
+  <select id="finAllByProduce" resultMap="BaseResultMap">
+    select * from Recommend a join produce b on a.rec_proid=b.pro_id where a.rec_Id is not null
+  </select>
 </mapper>

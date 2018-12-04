@@ -2,13 +2,10 @@ package com.mx.minnong.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.mx.minnong.pojo.Produce;
-import com.mx.minnong.pojo.vo.PageVo;
-import com.mx.minnong.pojo.vo.ProduceVO;
+import com.mx.minnong.pojo.qo.PageQO;
+import com.mx.minnong.pojo.qo.ProduceQO;
 import com.mx.minnong.service.ProduceService;
-import com.mx.minnong.utils.BaseClassRedisKey;
-import com.mx.minnong.utils.IpUtil;
-import com.mx.minnong.utils.JoeJSONResult;
-import com.mx.minnong.utils.RedisUtil;
+import com.mx.minnong.utils.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +36,8 @@ public class ProduceController {
 
 
     @RequestMapping(value ="findAllByCondition01")
-    public JoeJSONResult findAllByCondition01(ProduceVO produceVO){
-        System.out.println(produceVO.getProName());
-        List<Produce> produces = produceService.findAllByCondition(produceVO);
+    public JoeJSONResult findAllByCondition01(ProduceQO produceQO){
+        List<Produce> produces = produceService.findAllByCondition(produceQO);
         PageInfo pageInfo=new PageInfo(produces);
         return JoeJSONResult.ok(pageInfo);
     }
@@ -50,13 +46,20 @@ public class ProduceController {
      *
      * 热门权值不做失效?
      * 热门商品默认前十
-     * @param pageVo
+     * @param pageQO
      * @return
      */
     @RequestMapping("findHot")
-    public JoeJSONResult findHot(PageVo pageVo){
-        List<Produce> produces= produceService.findHot(pageVo);
-        PageInfo pageInfo =new PageInfo(produces);
+    public JoeJSONResult findHot(PageQO pageQO){
+        List<Produce> produces=produceService.findHot(pageQO);
+        ListPageUtil<Produce> listPageUtil = new ListPageUtil<>(produces,pageQO.getPageNum(),pageQO.getPageSize());
+        PageInfo pageInfo =new PageInfo(listPageUtil.getPagedList());
+        pageInfo.setPageNum(listPageUtil.getPageNum());
+        pageInfo.setPageSize(listPageUtil.getPageSize());
+        pageInfo.setTotal(listPageUtil.getTotal());
+        pageInfo.setPages(listPageUtil.getPages());
+        pageInfo.setNextPage(listPageUtil.getNextPage());
+        pageInfo.setPrePage(listPageUtil.getPrePage());
         return JoeJSONResult.ok(pageInfo);
     }
 
@@ -64,35 +67,35 @@ public class ProduceController {
      * 根据大类小类种类和省份市区价格条件获得产品  pro_lowest最低价格 pro_highest最高价格
      */
     @RequestMapping(value ="findAllByCondition")
-    public JoeJSONResult findAllByCondition(ProduceVO produceVO) throws IllegalAccessException{
+    public JoeJSONResult findAllByCondition(ProduceQO produceQO) throws IllegalAccessException{
         String key=BaseClassRedisKey.PRODUCECLASS_FINDALLBYCONDITIONNULL;
         List<Produce> produces=new ArrayList<Produce>();
         boolean flag = true;
-        Class produceVOClass = produceVO.getClass();
-        //produceVOClass = produceVOClass.getSuperclass() 得到父类的class文件
-            Field[] field = produceVOClass.getDeclaredFields();
-                for (Field f : field) {
-                f.setAccessible(true);
-                if (!"".equals(f.get(produceVO)) && (f.get(produceVO) != null) && !(f.getName().equals("pageNum") || f.getName().equals("pageSize"))) {
-                    flag = false;
-                    break;
-                } // System.out.println("属性："+f.getName()+" 值："+f.get(produceVO));
-            }
+        Class produceQOClass = produceQO.getClass();
+        //produceQOClass = produceQOClass.getSuperclass() 得到父类的class文件
+        Field[] field = produceQOClass.getDeclaredFields();
+        for (Field f : field) {
+            f.setAccessible(true);
+            if (!"".equals(f.get(produceQO)) && (f.get(produceQO) != null) && !(f.getName().equals("pageNum") || f.getName().equals("pageSize"))) {
+                flag = false;
+                break;
+            } // System.out.println("属性："+f.getName()+" 值："+f.get(produceQO));
+        }
         if (flag) {
-            if (redisUtil.existsKey(key+produceVO.getPageNum()+"_"+produceVO.getPageSize())) {
-                produces = redisUtil.range(key+produceVO.getPageNum()+"_"+produceVO.getPageSize());
+            if (redisUtil.existsKey(key+produceQO.getPageNum()+"_"+produceQO.getPageSize())) {
+                produces = redisUtil.range(key+produceQO.getPageNum()+"_"+produceQO.getPageSize());
                 System.out.println(produces.size());
             } else {
                 log.info("【Get Redis Data】 findAllByCondition is null ");
-                produces = produceService.findAllByCondition(produceVO);
+                produces = produceService.findAllByCondition(produceQO);
                 if(produces.size()>0){
-                    redisUtil.rightPushAll(key+produceVO.getPageNum()+"_"+produceVO.getPageSize(), produces);
+                    redisUtil.rightPushAll(key+produceQO.getPageNum()+"_"+produceQO.getPageSize(), produces);
                     //保存3小时
-                    redisUtil.pireKey(key+produceVO.getPageNum()+"_"+produceVO.getPageSize(), 3, TimeUnit.HOURS);
+                    redisUtil.pireKey(key+produceQO.getPageNum()+"_"+produceQO.getPageSize(), 3, TimeUnit.HOURS);
                 }
             }
         } else {
-            produces = produceService.findAllByCondition(produceVO);
+            produces = produceService.findAllByCondition(produceQO);
         }
         PageInfo pageInfo=new PageInfo(produces);
         return JoeJSONResult.ok(pageInfo);
@@ -119,15 +122,15 @@ public class ProduceController {
     }
     /**
      *
-     * @param pageVo
+     * @param pageQO
      * @param proSeller
      * @return
      */
     @RequestMapping("findByProseller")
-    public JoeJSONResult findByProseller(PageVo pageVo,@RequestParam Integer proSeller){
-        System.out.println(pageVo.getPageSize());
+    public JoeJSONResult findByProseller(PageQO pageQO, @RequestParam Integer proSeller){
+        System.out.println(pageQO.getPageSize());
         System.out.println(proSeller);
-        List<Produce> produces=produceService.findByProseller(pageVo,proSeller);
+        List<Produce> produces=produceService.findByProseller(pageQO,proSeller);
         PageInfo pageInfo=new PageInfo(produces);
         return JoeJSONResult.ok(pageInfo);
     }

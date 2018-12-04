@@ -1,9 +1,13 @@
 package com.mx.minnong.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Recommend {
+public class Recommend implements Serializable {
+
+    private static final long serialVersionUID = 54973916533160509L;
+
     @Id
     @Column(name = "rec_id")
     private Integer recId;
@@ -25,7 +29,6 @@ public class Recommend {
      */
     @Column(name = "ren_endtime")
     private Date renEndtime;
-
 
     /**
      * 产品

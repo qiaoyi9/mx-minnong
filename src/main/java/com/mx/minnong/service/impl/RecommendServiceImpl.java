@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.mx.minnong.mapper.ProduceMapper;
 import com.mx.minnong.mapper.RecommendMapper;
 import com.mx.minnong.pojo.Recommend;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 import com.mx.minnong.service.RecommendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,10 @@ public class RecommendServiceImpl implements RecommendService {
     //获得所有推荐产品
     @Override
     @Transactional
-    public List<Recommend> findAll(PageVo pageVo) {
-        List<Recommend> list=recommendMapper.selectAll();
+    public List<Recommend> finAllByProduce(PageQO pageQO) {
+        //使用分页插件,核心代码就这一行
+        PageHelper.startPage(pageQO.getPageNum(), pageQO.getPageSize());
+        List<Recommend> list=recommendMapper.finAllByProduce();
         Recommend recommend;
         //迭代器 用于删除多个元素 (remove( index) 会漏元素 删除特定，foreach删除多个会报 ConcurrentModificationException 适于删除单个后结束循环 )
         Iterator<Recommend> it = list.iterator();
@@ -53,8 +55,7 @@ public class RecommendServiceImpl implements RecommendService {
                 recommends.add(r);
             }
         }
-        //使用分页插件,核心代码就这一行
-        PageHelper.startPage(pageVo.getPageNum(), pageVo.getPageSize());
+
         return recommends;
     }
 

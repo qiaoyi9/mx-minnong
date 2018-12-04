@@ -5,7 +5,7 @@ import com.mx.minnong.exception.NetException;
 import com.mx.minnong.mapper.NewsMapper;
 import com.mx.minnong.myenum.NetEnum;
 import com.mx.minnong.pojo.News;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 import com.mx.minnong.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -50,8 +50,8 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<News> findAll(PageVo pageVo) {
-        PageHelper.startPage(pageVo.getPageNum(),pageVo.getPageSize(),"news_createTime DESC");
+    public List<News> findAll(PageQO pageQO) {
+        PageHelper.startPage(pageQO.getPageNum(),pageQO.getPageSize(),"news_createTime DESC");
         return newsMapper.selectAll();
     }
 

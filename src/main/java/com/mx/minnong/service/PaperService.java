@@ -6,7 +6,7 @@ package com.mx.minnong.service;
  */
 
 import com.mx.minnong.pojo.Paper;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 
 import java.util.List;
 
@@ -25,5 +25,5 @@ public interface PaperService {
 
     int updatePaperByPrimaryKey(Paper paper);
 
-    List<Paper> findAll(PageVo pageVo);
+    List<Paper> findAll(PageQO pageQO);
 }

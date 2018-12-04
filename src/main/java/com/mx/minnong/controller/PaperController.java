@@ -2,7 +2,7 @@ package com.mx.minnong.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.mx.minnong.pojo.Paper;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 import com.mx.minnong.service.PaperService;
 import com.mx.minnong.utils.FastDFSClient;
 import com.mx.minnong.utils.JoeJSONResult;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -71,7 +70,7 @@ public class PaperController {
     }
 
     @RequestMapping(value = "api",method = RequestMethod.GET)
-    public JoeJSONResult findAllPaper(PageVo pageVo){
+    public JoeJSONResult findAllPaper(PageQO pageVo){
         List<Paper> papers = paperService.findAll(pageVo);
         PageInfo pageInfo = new PageInfo(papers);
         return JoeJSONResult.ok(pageInfo);

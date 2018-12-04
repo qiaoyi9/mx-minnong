@@ -1,7 +1,7 @@
 package com.mx.minnong.service;
 
 import com.mx.minnong.pojo.News;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface NewsService {
 
     int updateNews(News news);
 
-    List<News> findAll(PageVo pageVo);
+    List<News> findAll(PageQO pageQO);
 
     int deleteNews(Integer id);
 }

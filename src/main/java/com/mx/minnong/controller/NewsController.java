@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.mx.minnong.exception.NetException;
 import com.mx.minnong.myenum.NetEnum;
 import com.mx.minnong.pojo.News;
-import com.mx.minnong.pojo.vo.PageVo;
+import com.mx.minnong.pojo.qo.PageQO;
 import com.mx.minnong.service.NewsService;
 import com.mx.minnong.utils.ApiRootPath;
 import com.mx.minnong.utils.FastDFSClient;
@@ -59,7 +59,7 @@ public class NewsController {
      * 查询多条新闻  分页查询
      */
     @RequestMapping(value = "api", method = RequestMethod.GET)
-    public JoeJSONResult findAll(PageVo pageVo) {
+    public JoeJSONResult findAll(PageQO pageVo) {
         //TODO 新闻查询 生产环境redis缓存
         List<News> news = newsService.findAll(pageVo);
         PageInfo<News> pageInfo = new PageInfo<News>(news);
